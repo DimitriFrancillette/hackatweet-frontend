@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;900&family=Noto+Sans:wght@200;400&display=swap");
+
+.main {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    font-family: "Montserrat";
+    /* font-weight: 900; */
+}
+
+.leftSide {
+    height: 100%;
+    width: 40%;
+    background-image: url('/loginImage.png');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bigBird {
+    height: 350px;
+    width: 350px;
+    transform: rotate(3.142rad);
+
+}
+
+.rightSide {
+    height: 100%;
+    width: 60%;
+    background-color: #2A3C50;
+    padding-top: 2rem;
+    padding-left: 2rem;
+    color: white;
+}
+
+.bird_div {
+    margin-bottom: 2rem;
+}
+
+.bird {
+    height: 50px;
+    width: 50px;
+    transform: rotate(3.142rad);
+}
+
+.text_div {
+    width: 50%;
+}
+.bigTitle {
+    font-size: 75px;
+    font-weight: 900;
+}
+
+.smallTitle {
+    font-size: 40px;
+}
