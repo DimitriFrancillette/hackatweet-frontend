@@ -54,3 +54,35 @@
 .smallTitle {
     font-size: 40px;
 }
+
+.buttons_div {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+.signUpbutton {
+    border-radius: 30px;
+    width: 250px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bolder;
+    margin: 20px 0px 20px 0px;
+}
+
+.signText {
+    margin-left: 12px;
+    font-weight: bolder;
+}
+.signInbutton {
+    border-radius: 30px;
+    width: 250px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bolder;
+    background-color:  #2A3C50;
+    border: solid grey 1.5px;
+    color: #4096FF;
+    margin: 20px 0px 20px 0px;
+
+}
