@@ -3,7 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { Button, Modal, Input, Space } from 'antd';
 import { useState } from 'react';
+import SignUp from './SignUp';
+import SignIn from './SignIn';
 
+// TODO faire passer les modales dans  les composants signup et signIn et faire passer le state correspondant en props
 
 function Login() {
 
