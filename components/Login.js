@@ -1,25 +1,28 @@
 import styles from '../styles/Login.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
-import { Button, Modal } from 'antd';
+import { Button, Modal, Input, Space } from 'antd';
 import { useState } from 'react';
 
 
 function Login() {
 
     const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
+    const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
 
-    const showModal = () => {
-        setIsSignUpModalOpen(true);
+    const showModal = (e) => {
+        e === 'up' ? setIsSignUpModalOpen(true) : setIsSignInModalOpen(true);
     };
 
-    const handleOk = () => {
-        setIsSignUpModalOpen(false);
+    const handleOk = (e) => {
+        e === 'up' ? setIsSignUpModalOpen(false) : setIsSignInModalOpen(false);
     };
 
-    const handleCancel = () => {
-        setIsSignUpModalOpen(false);
+    const handleCancel = (e) => {
+        e === 'up' ? setIsSignUpModalOpen(false) : setIsSignInModalOpen(false);
     };
+
+
     return (
         <div className={styles.main}>
             <div className={styles.leftSide}>
@@ -34,7 +37,7 @@ function Login() {
                     <h2 className={styles.smallTitle}>Join Hackatweet today.</h2>
                 </div>
                 <div className={styles.buttons_div}>
-                    <Button type="primary" onClick={() => showModal()} className={styles.signUpbutton}>
+                    <Button type="primary" onClick={() => showModal('up')} className={styles.signUpbutton}>
                         Sign up
                     </Button>
                     <span className={styles.signText}>Already have an account?</span>
@@ -42,12 +45,49 @@ function Login() {
                         Sign in
                     </Button>
                 </div>
+                    <Modal
+                    className={styles.modale}
+                    open={isSignUpModalOpen}
+                    onCancel={() => handleCancel('up')}
+                    centered
+                    bodyStyle={{ height: 350 }}
+                    width={600}
+                    footer={[
+                        <Button className={styles.modaleButton} key="submit" type="primary" onClick={() => handleOk('up')}>
+                            Sign up
+                        </Button>
+                    ]}
+                >
+                    <FontAwesomeIcon icon={faTwitter} className={styles.modaleBird} style={{ color: "#000000", }} />
+                    <p className={styles.modaleUpText} >Create your Hackatweet account</p>
+                    <Space direction="vertical" size={20}>
+                        <Input className={styles.modaleInput} placeholder="Firstname" />
+                        <Input className={styles.modaleInput} placeholder="Username" />
+                        <Input className={styles.modaleInput} placeholder="Password" />
+                    </Space>
 
-                <Modal title="" open={isSignUpModalOpen} onOk={() => handleOk()} onCancel={() => handleCancel()}>
-                    <p>Some contents...</p>
-                    <p>Some contents...</p>
-                    <p>Some contents...</p>
                 </Modal>
+
+                <Modal
+                    open={isSignInModalOpen}
+                    onCancel={() => handleCancel()}
+                    centered
+                    bodyStyle={{ height: 350 }}
+                    width={600}
+                    footer={[
+                        <Button className={styles.modaleButton} key="submit" type="primary" onClick={() => handleOk()}>
+                            Sign in
+                        </Button>
+                    ]}
+                >
+                    <FontAwesomeIcon icon={faTwitter} className={styles.modaleBird} style={{ color: "#000000", }} />
+                    <p className={styles.modaleInText} >Connect to Hackatweet</p>
+                    <Space direction="vertical" size={20}>
+                        <Input className={styles.modaleInput} placeholder="Username" />
+                        <Input className={styles.modaleInput} placeholder="Password" />
+                    </Space>
+                </Modal>
+
             </div>
         </div>
     );

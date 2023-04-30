@@ -38,8 +38,8 @@
 }
 
 .bird {
-    height: 50px;
-    width: 50px;
+    height: 60px;
+    width: 60px;
     transform: rotate(3.142rad);
 }
 
@@ -84,5 +84,38 @@
     border: solid grey 1.5px;
     color: #4096FF;
     margin: 20px 0px 20px 0px;
+}
 
+.modaleBird {
+    height:50px;
+    width: 50px;
+    transform: rotate(3.142rad);
+    margin-left: 250px;
+}
+.modaleUpText {
+    font-size: 20px;
+    font-weight: bolder;
+    margin-left: 125px;
+}
+
+.modaleInText {
+    font-size: 20px;
+    font-weight: bolder;
+    margin-left: 170px;
+}
+
+.modaleInput {
+    margin-left: 125px;
+    width: 300px;
+    height: 60px;
+    border: solid #2A3C50 1.5px;
+}
+
+.modaleButton {
+    width: 200px;
+    border-radius: 15px;
+    background-color: #2A3C50;
+    color: white;
+    font-weight: bolder;
+    margin-right: 11rem;
 }
