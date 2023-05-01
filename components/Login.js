@@ -61,12 +61,12 @@ function Login() {
                         </Button>
                     ]}
                 >
-                    <FontAwesomeIcon icon={faTwitter} className={styles.modaleBird} style={{ color: "#000000", }} />
+                    <FontAwesomeIcon icon={faTwitter} className={styles.modaleBird} />
                     <p className={styles.modaleUpText} >Create your Hackatweet account</p>
                     <Space direction="vertical" size={20}>
-                        <Input className={styles.modaleInput} placeholder="Firstname" />
-                        <Input className={styles.modaleInput} placeholder="Username" />
-                        <Input className={styles.modaleInput} placeholder="Password" />
+                        <Input className={styles.modaleInput} placeholder="Firstname" style={{backgroundColor: "#2A3C50"}}/>
+                        <Input className={styles.modaleInput} placeholder="Username" style={{backgroundColor: "#2A3C50"}}/>
+                        <Input className={styles.modaleInput} placeholder="Password" style={{backgroundColor: "#2A3C50"}}/>
                     </Space>
 
                 </Modal>
@@ -83,11 +83,11 @@ function Login() {
                         </Button>
                     ]}
                 >
-                    <FontAwesomeIcon icon={faTwitter} className={styles.modaleBird} style={{ color: "#000000", }} />
+                    <FontAwesomeIcon icon={faTwitter} className={styles.modaleBird} />
                     <p className={styles.modaleInText} >Connect to Hackatweet</p>
                     <Space direction="vertical" size={20}>
-                        <Input className={styles.modaleInput} placeholder="Username" />
-                        <Input className={styles.modaleInput} placeholder="Password" />
+                        <Input className={styles.modaleInput} placeholder="Username" style={{backgroundColor: "#2A3C50"}}/>
+                        <Input className={styles.modaleInput} placeholder="Password" style={{backgroundColor: "#2A3C50"}}/>
                     </Space>
                 </Modal>
 

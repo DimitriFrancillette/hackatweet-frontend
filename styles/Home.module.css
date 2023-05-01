@@ -53,9 +53,18 @@
     border-right: solid #666a7c 1.5px;
 }
 
+.tweet_div {
+    height: 30vh;
+    border-bottom: solid #666a7c 1.5px;
+}
+
+.lastTweets_div {
+    height: 70vh;
+
+}
+
 .rightSide {
     height: 100vh;
     width: 34%;
     background-color: #171f2d;
-
 }

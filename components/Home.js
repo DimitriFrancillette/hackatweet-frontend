@@ -4,11 +4,15 @@ import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faEgg } from "@fortawesome/free-solid-svg-icons";
 import { Button } from 'antd';
 import Login from './Login'
+import Trends from './Trends';
+import Tweet from './Tweet'
+import LastTweets from './LastTweets'
 
 function Home() {
+
   return (
     <div className={styles.mainHome}>
-      <div className={styles.leftSide}>
+      {/* <div className={styles.leftSide}>
         <div className={styles.bird_div}>
           <FontAwesomeIcon icon={faTwitter} className={styles.bird} style={{ color: "#ffffff", }} />
         </div>
@@ -27,9 +31,18 @@ function Home() {
           </Button>
         </div>
       </div>
-      <div className={styles.middle}></div>
-      <div className={styles.rightSide}></div>
-      {/* <Login /> */}
+      <div className={styles.middle}>
+        <div className={styles.tweet_div}>
+          <Tweet/>
+        </div>
+        <div className={styles.lastTweets_div}>
+          <LastTweets/>
+        </div>
+      </div>
+      <div className={styles.rightSide}>
+        <Trends/>
+      </div> */}
+      <Login />
     </div>
   );
 }

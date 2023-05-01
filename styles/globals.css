@@ -12,5 +12,10 @@ body {
 }
 
 
+.ant-modal .ant-modal-content {
+  background-color: #2A3C50;
+}
 
-
+.ant-modal .ant-modal-content ::placeholder{
+  color: #808080;
+}
