@@ -1,12 +1,16 @@
 import styles from '../styles/Tweet.module.css';
-import { Input } from 'antd';
+import { Input, Button } from 'antd';
+import { useState } from "react";
+
 
 function Tweet() {
 
-  const { TextArea } = Input;
+  const [letterCount, setLetterCount] = useState(0);
 
+
+  const { TextArea } = Input;
   const onChange = (e) => {
-    console.log('Change:', e.target.value);
+    setLetterCount(e.target.value.length)
   };
 
   return (
@@ -15,9 +19,14 @@ function Tweet() {
         <h3>Home</h3>
       </div>
       <div className={styles.input_div}>
-      <TextArea rows={3} placeholder="maxLength is 6" showCount maxLength={280} onChange={onChange}/>
+        <TextArea className={styles.textArea} rows={3} placeholder="What's up ?" maxLength={280} style={{ backgroundColor: "#2A3C50" }} onChange={onChange} />
       </div>
-      <div className={styles.button_div}></div>
+      <div className={styles.button_div}>
+        <span className={styles.letterCount}>{letterCount}/280</span>
+        <Button type="primary" onClick={() => showModal('up')} className={styles.signUpbutton}>
+          Tweet
+        </Button>
+      </div>
     </div>
   );
 }

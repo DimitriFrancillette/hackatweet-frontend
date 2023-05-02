@@ -12,7 +12,7 @@ function Home() {
 
   return (
     <div className={styles.mainHome}>
-      {/* <div className={styles.leftSide}>
+      <div className={styles.leftSide}>
         <div className={styles.bird_div}>
           <FontAwesomeIcon icon={faTwitter} className={styles.bird} style={{ color: "#ffffff", }} />
         </div>
@@ -41,8 +41,8 @@ function Home() {
       </div>
       <div className={styles.rightSide}>
         <Trends/>
-      </div> */}
-      <Login />
+      </div>
+      {/* <Login /> */}
     </div>
   );
 }

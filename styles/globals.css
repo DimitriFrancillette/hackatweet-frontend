@@ -7,15 +7,19 @@ body {
 
 * {
   box-sizing: border-box;
-  /* for hashtag background */
-  /* background-color: #38506B; */
 }
 
-
+/* css background des modals */
 .ant-modal .ant-modal-content {
   background-color: #2A3C50;
 }
 
+/* css placeholder des modals */
 .ant-modal .ant-modal-content ::placeholder{
   color: #808080;
+}
+
+.ant-input-textarea-show-count >.ant-input {
+  background-color: #2A3C50;
+  color: white;
 }
