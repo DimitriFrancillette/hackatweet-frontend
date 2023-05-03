@@ -2,11 +2,9 @@ import styles from '../styles/Tweet.module.css';
 import { Input, Button } from 'antd';
 import { useState } from "react";
 
-
 function Tweet() {
 
   const [letterCount, setLetterCount] = useState(0);
-
 
   const { TextArea } = Input;
   const onChange = (e) => {

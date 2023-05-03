@@ -9,41 +9,44 @@ import Tweet from './Tweet'
 import LastTweets from './LastTweets'
 
 function Home() {
+  const homePage = <div className={styles.mainHome}>
+    <div className={styles.leftSide}>
+      <div className={styles.bird_div}>
+        <FontAwesomeIcon icon={faTwitter} className={styles.bird} style={{ color: "#ffffff", }} />
+      </div>
+      <div className={styles.user_div}>
+        <div className={styles.userInfos}>
+          <div className={styles.userLogo}>
+            <FontAwesomeIcon icon={faEgg} className={styles.egg} />
+          </div>
+          <div className={styles.userDetails}>
+            <div className={styles.userFirstname}>John</div>
+            <div className={styles.userUsername}>@JohnCena</div>
+          </div>
+        </div>
+        <Button type="primary" ghost>
+          Logout
+        </Button>
+      </div>
+    </div>
+    <div className={styles.middle}>
+      <div className={styles.tweet_div}>
+        <Tweet />
+      </div>
+      <div className={styles.lastTweets_div}>
+        <LastTweets />
+      </div>
+    </div>
+    <div className={styles.rightSide}>
+      <Trends />
+    </div>
+  </div>
 
   return (
-    <div className={styles.mainHome}>
-      <div className={styles.leftSide}>
-        <div className={styles.bird_div}>
-          <FontAwesomeIcon icon={faTwitter} className={styles.bird} style={{ color: "#ffffff", }} />
-        </div>
-        <div className={styles.user_div}>
-          <div className={styles.userInfos}>
-            <div className={styles.userLogo}>
-              <FontAwesomeIcon icon={faEgg} className={styles.egg} />
-            </div>
-            <div className={styles.userDetails}>
-              <div className={styles.userFirstname}>John</div>
-              <div className={styles.userUsername}>@JohnCena</div>
-            </div>
-          </div>
-          <Button type="primary" ghost>
-            Logout
-          </Button>
-        </div>
-      </div>
-      <div className={styles.middle}>
-        <div className={styles.tweet_div}>
-          <Tweet/>
-        </div>
-        <div className={styles.lastTweets_div}>
-          <LastTweets/>
-        </div>
-      </div>
-      <div className={styles.rightSide}>
-        <Trends/>
-      </div>
-      {/* <Login /> */}
-    </div>
+    <>
+      {/* {homePage} */}
+      <Login />
+    </>
   );
 }
 
