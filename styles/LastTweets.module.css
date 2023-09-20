@@ -1,6 +1,4 @@
 .tweetCard {
-
-    padding: 30px;
     border-top: solid #666a7c 1.5px;
     border-bottom: solid #666a7c 1.5px;
 }
@@ -45,5 +43,4 @@
     margin-left: 10px;
     margin-right: 10px;
     color: white;
-
 }

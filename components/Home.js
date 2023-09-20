@@ -9,19 +9,39 @@ import Tweet from './Tweet'
 import LastTweets from './LastTweets'
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../reducers/user';
+import { useEffect, useState } from 'react';
+
 
 
 
 function Home() {
   const dispatch = useDispatch();
+  const [tweetsData, setTweetsData] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:3000/tweets/')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        // console.log(data[0]._id);
+        setTweetsData(data)
+      });
+  }, []);
 
   const user = useSelector((state) => state.user.value);
 
   const handleLogout = () => {
     dispatch(logout())
   }
-      
-      let firstPage = <Login />;
+
+  const tweetList = tweetsData.map((data, i) => {
+    return <LastTweets key={data._id}
+      description={data.description} 
+      firstname={data.user.firstname} 
+      username={data.user.username} />
+  });
+
+  let firstPage = <Login />;
 
   const homePage = <div className={styles.mainHome}>
     <div className={styles.leftSide}>
@@ -48,7 +68,7 @@ function Home() {
         <Tweet />
       </div>
       <div className={styles.lastTweets_div}>
-        <LastTweets />
+        {tweetList}
       </div>
     </div>
     <div className={styles.rightSide}>
