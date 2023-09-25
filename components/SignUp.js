@@ -14,6 +14,8 @@ function SignUp(props) {
   const [firstname, setFirstname] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [SignUpError, setSignUpError] = useState(false);
+
 
   const handleSignUp = () => {
 
@@ -23,6 +25,7 @@ function SignUp(props) {
       body: JSON.stringify({ firstname: firstname, username: username, password: password }),
     }).then(response => response.json())
       .then(data => {
+        console.log(data);
         if (data.result === true) {
           dispatch(login({ firstname: data.firstname , username: data.username, token: data.token }));
           setFirstname('');
@@ -30,8 +33,21 @@ function SignUp(props) {
           setPassword('');
           props.modalOk('up');
         }
+
+        setSignUpError(true);
+        setFirstname('');
+        setUsername('');
+        setPassword('');
+
       });
 
+  };
+
+  const handleCancel = () => {
+    
+    const closeModal = () => props.modalCancel('up');
+    closeModal();
+    setSignUpError(false);
   };
 
   return (
@@ -39,9 +55,9 @@ function SignUp(props) {
       <Modal
         className={styles.modale}
         open={props.modalState}
-        onCancel={() => props.modalCancel('up')}
+        onCancel={() => handleCancel()}
         centered
-        bodyStyle={{ height: 350 }}
+        bodyStyle={{ height: 400 }}
         width={600}
         footer={[
           <Button className={styles.modaleButton} key="submit" type="primary" onClick={() => handleSignUp()}>
@@ -56,7 +72,9 @@ function SignUp(props) {
           <Input onChange={(e) => setUsername(e.target.value)} value={username} className={styles.modaleInput} placeholder="Username" style={{ backgroundColor: "#2A3C50" }} />
           <Input onChange={(e) => setPassword(e.target.value)} value={password} className={styles.modaleInput} placeholder="Password" style={{ backgroundColor: "#2A3C50" }} />
         </Space>
-
+        {SignUpError && (
+              <p className={styles.modaleError}>L'utilisateur existe déja ou l'un des champs est éronné</p>
+            )}
       </Modal>
     </div>
   );
