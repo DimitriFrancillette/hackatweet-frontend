@@ -12,6 +12,8 @@ function SignIn(props) {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [SignInError, setSignInError] = useState(false);
+
   
   const handleSignIn = () => {
 
@@ -27,15 +29,26 @@ function SignIn(props) {
           setPassword('');
           props.modalOk();
         }
+        setUsername('');
+        setPassword('');
+        setSignInError(true);
+
       });
-  }
+  };
+
+  const handleCancel = () => {
+    
+    const closeModal = () => props.modalCancel();
+    closeModal();
+    setSignInError(false);
+  };
 
   return (
     <div className={styles.main}>
 
       <Modal
         open={props.modalState}
-        onCancel={() =>props.modalCancel()}
+        onCancel={() =>handleCancel()}
         centered
         bodyStyle={{ height: 350 }}
         width={600}
@@ -51,6 +64,9 @@ function SignIn(props) {
           <Input onChange={(e) => setUsername(e.target.value)} value={username} className={styles.modaleInput} placeholder="Username" style={{ backgroundColor: "#2A3C50" }} />
           <Input onChange={(e) => setPassword(e.target.value)} value={password} className={styles.modaleInput} placeholder="Password" style={{ backgroundColor: "#2A3C50" }} />
         </Space>
+        {SignInError && (
+              <p className={styles.modaleError}>Mauvais login ou mauvais mot de passe</p>
+            )}
       </Modal>
     </div>
   );
