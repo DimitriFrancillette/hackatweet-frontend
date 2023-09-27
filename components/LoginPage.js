@@ -7,7 +7,7 @@ import SignUp from './SignUp';
 import SignIn from './SignIn';
  
 
-function Login() {
+function LoginPage() {
 
     const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
     const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
@@ -57,4 +57,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default LoginPage;

@@ -14,10 +14,12 @@
 
 .textArea {
     width: 600px;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom:solid 1px #808080;
+    border: solid 3px #666a7c;
+    background-color: #2A3C50;
+    color: white;
+}
+
+.textArea::placeholder{
     color: white;
 }
 

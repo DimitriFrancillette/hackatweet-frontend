@@ -17,7 +17,7 @@ function Tweet() {
         <h3>Home</h3>
       </div>
       <div className={styles.input_div}>
-        <TextArea className={styles.textArea} rows={3} placeholder="What's up ?" maxLength={280} style={{ backgroundColor: "#2A3C50" }} onChange={onChange} />
+        <TextArea className={styles.textArea} rows={4} placeholder="What's up ?" maxLength={280} onChange={onChange} />
       </div>
       <div className={styles.button_div}>
         <span className={styles.letterCount}>{letterCount}/280</span>

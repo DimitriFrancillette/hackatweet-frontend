@@ -1,12 +1,12 @@
 import styles from '../styles/Home.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faEgg } from "@fortawesome/free-solid-svg-icons";
 import { Button } from 'antd';
-import Login from './Login'
+import LoginPage from './LoginPage';
 import Trends from './Trends';
-import Tweet from './Tweet'
-import LastTweets from './LastTweets'
+import Tweet from './Tweet';
+import LastTweets from './LastTweets';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../reducers/user';
 import { useEffect, useState } from 'react';
@@ -41,7 +41,7 @@ function Home() {
       username={data.user.username} />
   });
 
-  let firstPage = <Login />;
+  let firstPage = <LoginPage />;
 
   const homePage = <div className={styles.mainHome}>
     <div className={styles.leftSide}>
