@@ -1,6 +1,8 @@
 import styles from '../styles/Tweet.module.css';
 import { Input, Button } from 'antd';
 import { useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+
 
 function Tweet() {
 
@@ -14,17 +16,19 @@ function Tweet() {
     setTweetText(e.target.value)
   };
 
+  const user = useSelector((state) => state.user.value);
+
+
   const handleTweet = () => {
 
     console.log(tweetText);
     fetch('http://localhost:3000/tweets/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ description: tweetText, user: '6516e2e6e7ed55e42429b4bb'}),
+      body: JSON.stringify({ description: tweetText, user: user.userId}),
     }).then(response => response.json())
       .then(data => {
         console.log(data);
-
       });
   }
 

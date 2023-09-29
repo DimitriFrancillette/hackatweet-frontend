@@ -27,7 +27,7 @@ function SignUp(props) {
       .then(data => {
         console.log(data);
         if (data.result === true) {
-          dispatch(login({ firstname: data.firstname , username: data.username, token: data.token }));
+          dispatch(login({ firstname: data.firstname , username: data.username, token: data.token, userId: data.userId }));
           setFirstname('');
           setUsername('');
           setPassword('');

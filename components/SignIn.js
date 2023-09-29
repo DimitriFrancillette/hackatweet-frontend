@@ -24,7 +24,7 @@ function SignIn(props) {
     }).then(response => response.json())
       .then(data => {
         if (data.result === true) {
-          dispatch(login({ firstname: data.firstname , username: data.username, token: data.token }));
+          dispatch(login({ firstname: data.firstname , username: data.username, token: data.token, userId: data.userId }));
           setUsername('');
           setPassword('');
           props.modalOk();
