@@ -1,4 +1,4 @@
-import styles from '../styles/Tweet.module.css';
+import styles from '../styles/TweetPosting.module.css';
 import { Input, Button } from 'antd';
 import { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';

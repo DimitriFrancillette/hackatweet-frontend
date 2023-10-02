@@ -5,8 +5,8 @@ import { faEgg } from "@fortawesome/free-solid-svg-icons";
 import { Button } from 'antd';
 import LoginPage from './LoginPage';
 import Trends from './Trends';
-import Tweet from './Tweet';
-import LastTweets from './LastTweets';
+import TweetPosting from './TweetPosting';
+import OneTweet from './OneTweet';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../reducers/user';
 import { useEffect, useState } from 'react';
@@ -35,7 +35,7 @@ function Home() {
   }
 
   const tweetList = tweetsData.map((data, i) => {
-    return <LastTweets key={data._id}
+    return <OneTweet key={data._id}
       description={data.description} 
       firstname={data.user.firstname} 
       username={data.user.username} />
@@ -65,7 +65,7 @@ function Home() {
     </div>
     <div className={styles.middle}>
       <div className={styles.tweet_div}>
-        <Tweet />
+        <TweetPosting />
       </div>
       <div className={styles.lastTweets_div}>
         {tweetList}

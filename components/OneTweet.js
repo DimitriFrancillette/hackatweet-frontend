@@ -1,10 +1,10 @@
-import styles from '../styles/LastTweets.module.css';
+import styles from '../styles/OneTweet.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEgg, faHeart, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 
 
-function LastTweets(props) {
+function OneTweet(props) {
   return (
     <div className={styles.main}>
       <div className={styles.tweetCard}>
@@ -26,4 +26,4 @@ function LastTweets(props) {
   );
 }
 
-export default LastTweets;
+export default OneTweet;
