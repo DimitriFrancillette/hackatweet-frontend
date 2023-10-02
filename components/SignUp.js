@@ -14,7 +14,7 @@ function SignUp(props) {
   const [firstname, setFirstname] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [SignUpError, setSignUpError] = useState(false);
+  const [signUpError, setSignUpError] = useState(false);
 
 
   const handleSignUp = () => {
@@ -72,7 +72,7 @@ function SignUp(props) {
           <Input onChange={(e) => setUsername(e.target.value)} value={username} className={styles.modaleInput} placeholder="Username" style={{ backgroundColor: "#2A3C50" }} />
           <Input onChange={(e) => setPassword(e.target.value)} value={password} className={styles.modaleInput} placeholder="Password" style={{ backgroundColor: "#2A3C50" }} />
         </Space>
-        {SignUpError && (
+        {signUpError && (
               <p className={styles.modaleError}>L'utilisateur existe déja ou l'un des champs est éronné</p>
             )}
       </Modal>

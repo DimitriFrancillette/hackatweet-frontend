@@ -2,18 +2,17 @@ import styles from '../styles/OneTweet.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEgg, faHeart, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from 'react-redux';
-
+import { useState, useEffect } from 'react';
 
 
 function OneTweet(props) {
-
+  const [showTrash, setShowTrash] = useState(false);
   const user = useSelector((state) => state.user.value);
 
   let heartStyle = { color: "#ffffff" };
   if (props.likes.length > 0) {
     heartStyle = { 'color': '#FF0000' };
   }
-
 
   const likesArray = props.likes;
   const likesNumber = likesArray.length;
@@ -43,9 +42,14 @@ function OneTweet(props) {
       .then(data => {
         props.tweetListChange();
       });
-
-
   };
+
+
+  useEffect(() => {
+    if (props.userId === user.userId) {
+      setShowTrash(true)
+    }
+  }, []);
 
   const deleteTweet = () => {
 
@@ -72,7 +76,9 @@ function OneTweet(props) {
         <div className={styles.like_div}>
           <FontAwesomeIcon icon={faHeart} style={heartStyle} onClick={() => handleLikes()} />
           <span className={styles.likeCount}>{likesNumber}</span>
-          <FontAwesomeIcon icon={faTrashCan} style={{ color: "#ffffff", }} onClick={() => deleteTweet()} />
+          {showTrash && (
+            <FontAwesomeIcon icon={faTrashCan} style={{ color: "#ffffff", }} onClick={() => deleteTweet()} />
+          )}
         </div>
 
       </div>
