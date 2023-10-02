@@ -1,10 +1,13 @@
 import styles from '../styles/OneTweet.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEgg, faHeart, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from 'react-redux';
 
 
 
 function OneTweet(props) {
+
+  const user = useSelector((state) => state.user.value);
 
   let heartStyle = { color: "#ffffff" };
   if (props.likes.length > 0) {
@@ -17,13 +20,14 @@ function OneTweet(props) {
 
   const handleLikes = () => {
 
-    const idsearch = likesArray.includes(props.userId)
+    const idsearch = likesArray.includes(user.userId)
+    console.log("ID SEARCH", idsearch)
 
     if (!idsearch) {
       fetch(`http://localhost:3000/tweets/like/${props.tweetId}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userId: props.userId }),
+        body: JSON.stringify({ userId: user.userId }),
       }).then(response => response.json())
         .then(data => {
           props.tweetListChange();
@@ -34,7 +38,7 @@ function OneTweet(props) {
     fetch(`http://localhost:3000/tweets/unlike/${props.tweetId}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userId: props.userId }),
+      body: JSON.stringify({ userId: user.userId }),
     }).then(response => response.json())
       .then(data => {
         props.tweetListChange();

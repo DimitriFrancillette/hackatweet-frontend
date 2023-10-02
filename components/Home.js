@@ -42,7 +42,7 @@ function Home() {
     return <OneTweet key={data._id}
       description={data.description}
       likes={data.likes}
-      userId={user.userId}
+      userId={data.user._id}
       firstname={data.user.firstname} 
       username={data.user.username}
       tweetId={data._id}
