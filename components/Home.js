@@ -24,12 +24,11 @@ function Home() {
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        // console.log(data[0]._id);
         setTweetsData(data)
       });
   }, [tweetsReload]);
 
-  const newTweetAdded = () => {
+  const tweetListChange = () => {
     setTweetsReload(!tweetsReload);
   };
 
@@ -43,7 +42,9 @@ function Home() {
     return <OneTweet key={data._id}
       description={data.description} 
       firstname={data.user.firstname} 
-      username={data.user.username} />
+      username={data.user.username}
+      tweetId={data._id}
+      tweetListChange={tweetListChange} />
   });
 
   let firstPage = <LoginPage />;
@@ -70,7 +71,7 @@ function Home() {
     </div>
     <div className={styles.middle}>
       <div className={styles.tweet_div}>
-        <TweetPosting newTweetAdded={newTweetAdded}/>
+        <TweetPosting tweetListChange={tweetListChange}/>
       </div>
       <div className={styles.lastTweets_div}>
         {tweetList}

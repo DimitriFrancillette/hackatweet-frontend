@@ -27,7 +27,7 @@ function TweetPosting(props) {
       body: JSON.stringify({ description: tweetText, user: user.userId}),
     }).then(response => response.json())
       .then(data => {
-        props.newTweetAdded();
+        props.tweetListChange();
       });
   }
 
