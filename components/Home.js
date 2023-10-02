@@ -40,7 +40,9 @@ function Home() {
 
   const tweetList = tweetsData.map((data, i) => {
     return <OneTweet key={data._id}
-      description={data.description} 
+      description={data.description}
+      likes={data.likes}
+      userId={user.userId}
       firstname={data.user.firstname} 
       username={data.user.username}
       tweetId={data._id}
