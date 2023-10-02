@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 
 
-function Tweet() {
+function TweetPosting(props) {
 
   const [letterCount, setLetterCount] = useState(0);
   const [tweetText, setTweetText] = useState('');
@@ -21,14 +21,13 @@ function Tweet() {
 
   const handleTweet = () => {
 
-    console.log(tweetText);
     fetch('http://localhost:3000/tweets/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ description: tweetText, user: user.userId}),
     }).then(response => response.json())
       .then(data => {
-        console.log(data);
+        props.newTweetAdded();
       });
   }
 
@@ -50,4 +49,4 @@ function Tweet() {
   );
 }
 
-export default Tweet;
+export default TweetPosting;

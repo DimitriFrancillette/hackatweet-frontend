@@ -17,6 +17,7 @@ import { useEffect, useState } from 'react';
 function Home() {
   const dispatch = useDispatch();
   const [tweetsData, setTweetsData] = useState([]);
+  const [tweetsReload, setTweetsReload] = useState(false);
 
   useEffect(() => {
     fetch('http://localhost:3000/tweets/')
@@ -26,7 +27,11 @@ function Home() {
         // console.log(data[0]._id);
         setTweetsData(data)
       });
-  }, []);
+  }, [tweetsReload]);
+
+  const newTweetAdded = () => {
+    setTweetsReload(!tweetsReload);
+  };
 
   const user = useSelector((state) => state.user.value);
 
@@ -65,7 +70,7 @@ function Home() {
     </div>
     <div className={styles.middle}>
       <div className={styles.tweet_div}>
-        <TweetPosting />
+        <TweetPosting newTweetAdded={newTweetAdded}/>
       </div>
       <div className={styles.lastTweets_div}>
         {tweetList}
