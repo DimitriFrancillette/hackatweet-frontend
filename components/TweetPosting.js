@@ -8,6 +8,7 @@ function TweetPosting(props) {
 
   const [letterCount, setLetterCount] = useState(0);
   const [tweetText, setTweetText] = useState('');
+  const [newTweet, setNewTweet] = useState({});
 
 
   const { TextArea } = Input;
@@ -24,11 +25,34 @@ function TweetPosting(props) {
     fetch('http://localhost:3000/tweets/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ description: tweetText, user: user.userId}),
+      body: JSON.stringify({ description: tweetText, user: user.userId }),
     }).then(response => response.json())
       .then(data => {
+        setNewTweet(data.newTweet);
         props.tweetListChange();
       });
+
+    const hashtagRegex = /#(\w+)/g;
+    const words = tweetText.split(' ');
+    words.map((word, index)=> {
+
+      const isHashtag = word.match(hashtagRegex);
+
+      if (isHashtag) {
+
+        fetch('http://localhost:3000/hashtags/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: word, tweetId: newTweet._id }),
+        }).then(response => response.json())
+          .then(data => {
+            props.tweetListChange();
+          });
+      }
+
+
+    });
+
   }
 
   return (
