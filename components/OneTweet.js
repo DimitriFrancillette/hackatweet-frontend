@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEgg, faHeart, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
+const moment = require('moment');
+
 
 
 function OneTweet(props) {
@@ -14,13 +16,14 @@ function OneTweet(props) {
     heartStyle = { 'color': '#FF0000' };
   }
 
+  const fromNow = moment(props.postedDate).fromNow(true);
+
   const likesArray = props.likes;
   const likesNumber = likesArray.length;
 
   const handleLikes = () => {
 
     const idsearch = likesArray.includes(user.userId)
-    console.log("ID SEARCH", idsearch)
 
     if (!idsearch) {
       fetch(`http://localhost:3000/tweets/like/${props.tweetId}`, {
@@ -58,7 +61,6 @@ function OneTweet(props) {
       headers: { 'Content-Type': 'application/json' },
     }).then(response => response.json())
       .then(data => {
-        console.log(data);
         props.tweetListChange();
       });
   };
@@ -70,7 +72,7 @@ function OneTweet(props) {
           <FontAwesomeIcon icon={faEgg} className={styles.egg} style={{ color: "#ffffff", }} />
           <div className={styles.userFirstname}>{props.firstname}</div>
           <div className={styles.userUsername}>@{props.username}</div>
-          <div className={styles.tweetTime}>.  5 hours</div>
+          <div className={styles.tweetTime}>.  {fromNow}</div>
         </div>
         <div className={styles.tweetText}>{props.description}</div>
         <div className={styles.like_div}>
