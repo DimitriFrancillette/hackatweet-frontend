@@ -11,9 +11,9 @@ function OneTweet(props) {
   const [showTrash, setShowTrash] = useState(false);
   const user = useSelector((state) => state.user.value);
 
-  let heartStyle = { color: "#ffffff" };
+  let heartStyle = { color: "#ffffff", cursor: "pointer" };
   if (props.likes.length > 0) {
-    heartStyle = { 'color': '#FF0000' };
+    heartStyle = { 'color': '#FF0000', cursor: "pointer" };
   }
 
   const fromNow = moment(props.postedDate).fromNow(true);
@@ -65,7 +65,7 @@ function OneTweet(props) {
       });
   };
 
-  
+
   //fonction qui récupère la phrase pour trouver les mots hashtag et les styliser avant de l'afficher
   function Sentence() {
     const hashtagRegex = /#(\w+)/g;
@@ -79,9 +79,9 @@ function OneTweet(props) {
           const isHashtag = word.match(hashtagRegex);
 
           if (isHashtag) {
+            
             //Si c'est le cas on l'affiche avec un style
             return (
-
               <span
                 key={index}
                 style={{ color: 'red', textDecoration: 'underline,' }} // Customize styling
@@ -95,8 +95,6 @@ function OneTweet(props) {
         })}
       </span>
     );
-
-
   }
 
   return (
@@ -113,7 +111,7 @@ function OneTweet(props) {
           <FontAwesomeIcon icon={faHeart} style={heartStyle} onClick={() => handleLikes()} />
           <span className={styles.likeCount}>{likesNumber}</span>
           {showTrash && (
-            <FontAwesomeIcon icon={faTrashCan} style={{ color: "#ffffff", }} onClick={() => deleteTweet()} />
+            <FontAwesomeIcon icon={faTrashCan} style={{ color: "#ffffff", cursor: "pointer" }} onClick={() => deleteTweet()} />
           )}
         </div>
 
