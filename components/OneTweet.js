@@ -65,6 +65,40 @@ function OneTweet(props) {
       });
   };
 
+  
+  //fonction qui récupère la phrase pour trouver les mots hashtag et les styliser avant de l'afficher
+  function Sentence() {
+    const hashtagRegex = /#(\w+)/g;
+    //on sépare les mots dans un tableau
+    const words = props.description.split(' ');
+
+    return (
+      <span>
+        {words.map((word, index) => {
+          //On passe dans le tableau et on vérifie si c'est un hashtag
+          const isHashtag = word.match(hashtagRegex);
+
+          if (isHashtag) {
+            //Si c'est le cas on l'affiche avec un style
+            return (
+
+              <span
+                key={index}
+                style={{ color: 'red', textDecoration: 'underline,' }} // Customize styling
+              > {word} </span>
+            );
+            
+          } else {
+            //Sinon on le renvoi normalement
+            return <span key={index}> {word} </span>;
+          }
+        })}
+      </span>
+    );
+
+
+  }
+
   return (
     <div className={styles.main}>
       <div className={styles.tweetCard}>
@@ -74,7 +108,7 @@ function OneTweet(props) {
           <div className={styles.userUsername}>@{props.username}</div>
           <div className={styles.tweetTime}>.  {fromNow}</div>
         </div>
-        <div className={styles.tweetText}>{props.description}</div>
+        <div className={styles.tweetText}><Sentence /></div>
         <div className={styles.like_div}>
           <FontAwesomeIcon icon={faHeart} style={heartStyle} onClick={() => handleLikes()} />
           <span className={styles.likeCount}>{likesNumber}</span>
