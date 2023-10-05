@@ -39,7 +39,7 @@ function Home() {
   }
 
   const tweetList = tweetsData.map((data, i) => {
-    return <OneTweet key={data._id}
+    return <OneTweet key={i}
       description={data.description}
       likes={data.likes}
       postedDate={data.postedTime}
@@ -81,7 +81,7 @@ function Home() {
       </div>
     </div>
     <div className={styles.rightSide}>
-      <Trends />
+      <Trends reload={tweetsReload} />
     </div>
   </div>
 

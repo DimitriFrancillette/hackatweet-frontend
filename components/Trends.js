@@ -1,16 +1,39 @@
 import styles from '../styles/Trends.module.css';
+import { useEffect, useState } from 'react';
 
-function Trends() {
+
+function Trends(props) {
+
+  const [hashReload, setHashReload] = useState(false);
+  const [hashData, setHashData] = useState([]);
+
+  const tweetListChange = () => {
+    setHashReload(!hashReload);
+  };
+
+  useEffect(() => {
+    fetch('http://localhost:3000/hashtags/')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        setHashData(data)
+      });
+  }, [props.reload]);
+
+  const hashList = hashData.map((data, i) => {
+    return <div key={i} className={styles.hashCard}>
+      <span className={styles.hashTag}>{data.name}</span>
+      <span className={styles.hashCount}>{data.tweet.length} tweets</span>
+    </div>
+  });
+
   return (
     <div className={styles.main}>
       <div className={styles.title}>
         <h3>Trends</h3>
       </div>
       <div className={styles.trendsBox}>
-        <div className={styles.hashCard}>
-          <span className={styles.hashTag}>#hackatweet</span>
-          <span className={styles.hashCount}>2 tweets</span>
-        </div>
+        {hashList}
       </div>
     </div>
   );
