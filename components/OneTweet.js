@@ -56,6 +56,24 @@ function OneTweet(props) {
 
   const deleteTweet = () => {
 
+    const hashtagRegex = /#(\w+)/g;
+    const words = props.description.split(' ');
+    words.map((word)=> {
+      const isHashtag = word.match(hashtagRegex);
+
+      if (isHashtag) {
+
+        fetch('http://localhost:3000/hashtags/', {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: word, tweetId: props.tweetId }),
+        }).then(response => response.json())
+          .then(data => {
+
+          });
+      }
+    });
+
     fetch(`http://localhost:3000/tweets/${props.tweetId}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
