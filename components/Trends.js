@@ -1,9 +1,9 @@
 import styles from '../styles/Trends.module.css';
 import { useEffect, useState } from 'react';
+import Link from 'next/Link';
 
 
 function Trends(props) {
-
   const [hashReload, setHashReload] = useState(false);
   const [hashData, setHashData] = useState([]);
 
@@ -30,7 +30,9 @@ function Trends(props) {
   return (
     <div className={styles.main}>
       <div className={styles.title}>
+        <Link href='/hashtag'>
         <h3>Trends</h3>
+        </Link>
       </div>
       <div className={styles.trendsBox}>
         {hashList}

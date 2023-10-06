@@ -13,7 +13,7 @@ function OneTweet(props) {
 
   let heartStyle = { color: "#ffffff", cursor: "pointer" };
   if (props.likes.length > 0) {
-    heartStyle = { 'color': '#FF0000', cursor: "pointer" };
+    heartStyle = { 'color': 'red', cursor: "pointer" };
   }
 
   const fromNow = moment(props.postedDate).fromNow(true);
@@ -102,7 +102,7 @@ function OneTweet(props) {
             return (
               <span
                 key={index}
-                style={{ color: 'red', textDecoration: 'underline,' }} // Customize styling
+                style={{ color: '#4096FF', fontWeight: 'bold' }} // Customize styling
               > {word} </span>
             );
             

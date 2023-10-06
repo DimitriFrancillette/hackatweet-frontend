@@ -1,0 +1,25 @@
+.main {
+    color: white;
+    padding-left: 20px;
+}
+
+.title_div {
+    font-size: 20px;
+}
+
+.input_div {
+    display: flex;
+    justify-content: center;
+}
+
+.searchHashtag {
+    width: 600px;
+    border: solid 3px #666a7c;
+    background-color: #2A3C50;
+    border-radius: 20px;
+    color: white;
+}
+
+.searchHashtag::placeholder{
+    color: white;
+}

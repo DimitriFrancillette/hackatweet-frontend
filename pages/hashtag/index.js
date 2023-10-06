@@ -1,21 +1,21 @@
-import styles from '../styles/Home.module.css';
+import styles from '../../styles/Hashtag.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faEgg } from "@fortawesome/free-solid-svg-icons";
 import { Button } from 'antd';
-import LoginPage from './LoginPage';
-import Trends from './Trends';
-import TweetPosting from './TweetPosting';
-import OneTweet from './OneTweet';
+import LoginPage from '../../components/LoginPage';
+import Trends from '../../components/Trends';
+import HashtagSearch from '../../components/HashtagSearch';
+import OneTweet from '../../components/OneTweet';
 import { useSelector, useDispatch } from 'react-redux';
-import { logout } from '../reducers/user';
+import { logout } from '../../reducers/user';
 import { useEffect, useState } from 'react';
 
 
 
 
 
-function Home() {
+function Hashtag() {
   const dispatch = useDispatch();
   const [tweetsData, setTweetsData] = useState([]);
   const [tweetsReload, setTweetsReload] = useState(false);
@@ -76,7 +76,7 @@ function Home() {
     </div>
     <div className={styles.middle}>
       <div className={styles.tweet_div}>
-        <TweetPosting tweetListChange={tweetListChange}/>
+        <HashtagSearch tweetListChange={tweetListChange}/>
       </div>
       <div className={styles.lastTweets_div}>
         {tweetList}
@@ -98,4 +98,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Hashtag;
