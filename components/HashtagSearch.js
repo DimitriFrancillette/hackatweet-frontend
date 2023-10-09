@@ -13,24 +13,6 @@ function HashtagSearch(props) {
     props.hashtagValue(e.target.value);
   };
 
-  const user = useSelector((state) => state.user.value);
-
-  useEffect(() => {
-    const hashtagRegex = /#(\w+)/g;
-    const words = searchText.split(' ');
-
-    words.map((word) => {
-      const isHashtag = word.match(hashtagRegex);
-
-      if (isHashtag) {
-        fetch(`http://localhost:3000/hashtags/name/${word}`)
-        .then(response => response.json())
-          .then(data => {
-            props.tweetListChange();
-          });
-      }
-    });
-  }, [searchText]);
 
   // const handleTweet = () => {
 

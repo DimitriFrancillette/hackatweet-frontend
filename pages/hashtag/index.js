@@ -17,55 +17,83 @@ import { useEffect, useState } from 'react';
 
 function Hashtag() {
   const dispatch = useDispatch();
+  const [hashtagsData, setHashtagsData] = useState([]);
   const [tweetsData, setTweetsData] = useState([]);
   const [tweetsReload, setTweetsReload] = useState(false);
+  const [search, setSearch] = useState("");
+  const [tweetFiltered, setTweetsFiltered] = useState(tweetsData);
+
+
 
 
   useEffect(() => {
     fetch('http://localhost:3000/hashtags/')
       .then(response => response.json())
       .then(data => {
-        console.log(data);
-        const tweetsArray = [];
-        data.forEach(tag => {
-          tag.tweet.forEach(element => {
-            tweetsArray.push(element);
-          });
-        });
+        console.log("RETURN DATA", data);
 
-        console.log("tweetsArray",tweetsArray)
-        setTweetsData(tweetsArray)
+        setHashtagsData(data);
+
+
+
+
+
       });
   }, [tweetsReload]);
+
+  const tweetsSetUp = (data) => {
+    const tweetsArray = [];
+    data.forEach(tag => {
+      tag.tweet.forEach(element => {
+        tweetsArray.push(element);
+      });
+    });
+
+    console.log("tweetsArray", tweetsArray)
+    setTweetsData(tweetsArray)
+  }
+
+
+  const hashtagValue = (value) => {
+    let filter = hashtagsData.filter((e) => {
+      return e.name.includes(`#${value}`);
+    });
+
+    if (filter.length > 0) {
+      tweetsSetUp(filter);
+    } else {
+      tweetsSetUp(hashtagsData)
+    }
+
+  };
 
   const tweetListChange = () => {
     setTweetsReload(!tweetsReload);
   };
 
-  
+
   const user = useSelector((state) => state.user.value);
-  
+
   const handleLogout = () => {
     dispatch(logout())
   }
-  
+
   const tweetList = tweetsData.map((data, i) => {
     return <OneTweet key={i}
-    description={data.description}
-    likes={data.likes}
-    postedDate={data.postedTime}
-    userId={data.user._id}
-    firstname={data.user.firstname} 
-    username={data.user.username}
-    tweetId={data._id}
-    tweetListChange={tweetListChange} />
+      description={data.description}
+      likes={data.likes}
+      postedDate={data.postedTime}
+      userId={data.user._id}
+      firstname={data.user.firstname}
+      username={data.user.username}
+      tweetId={data._id}
+      tweetListChange={tweetListChange} />
   });
-  
-  //todo le fichier index(hashtag) qui va filtré les hashtag et tweet à afficher
 
-  const hashtagValue = (value) => {
-    console.log(value)
-  };
+
+
+
+
 
   let firstPage = <LoginPage />;
 
@@ -91,7 +119,7 @@ function Hashtag() {
     </div>
     <div className={styles.middle}>
       <div className={styles.tweet_div}>
-        <HashtagSearch tweetListChange={tweetListChange} hashtagValue={hashtagValue}/>
+        <HashtagSearch tweetListChange={tweetListChange} hashtagValue={hashtagValue} />
       </div>
       <div className={styles.lastTweets_div}>
         {tweetList}
