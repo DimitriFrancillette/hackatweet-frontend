@@ -22,11 +22,19 @@ function Hashtag() {
 
 
   useEffect(() => {
-    fetch('http://localhost:3000/tweets/')
+    fetch('http://localhost:3000/hashtags/')
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        setTweetsData(data)
+        const tweetsArray = [];
+        data.forEach(tag => {
+          tag.tweet.forEach(element => {
+            tweetsArray.push(element);
+          });
+        });
+
+        console.log("tweetsArray",tweetsArray)
+        setTweetsData(tweetsArray)
       });
   }, [tweetsReload]);
 
@@ -34,23 +42,30 @@ function Hashtag() {
     setTweetsReload(!tweetsReload);
   };
 
+  
   const user = useSelector((state) => state.user.value);
-
+  
   const handleLogout = () => {
     dispatch(logout())
   }
-
+  
   const tweetList = tweetsData.map((data, i) => {
     return <OneTweet key={i}
-      description={data.description}
-      likes={data.likes}
-      postedDate={data.postedTime}
-      userId={data.user._id}
-      firstname={data.user.firstname} 
-      username={data.user.username}
-      tweetId={data._id}
-      tweetListChange={tweetListChange} />
+    description={data.description}
+    likes={data.likes}
+    postedDate={data.postedTime}
+    userId={data.user._id}
+    firstname={data.user.firstname} 
+    username={data.user.username}
+    tweetId={data._id}
+    tweetListChange={tweetListChange} />
   });
+  
+  //todo le fichier index(hashtag) qui va filtré les hashtag et tweet à afficher
+
+  const hashtagValue = (value) => {
+    console.log(value)
+  };
 
   let firstPage = <LoginPage />;
 
@@ -76,7 +91,7 @@ function Hashtag() {
     </div>
     <div className={styles.middle}>
       <div className={styles.tweet_div}>
-        <HashtagSearch tweetListChange={tweetListChange}/>
+        <HashtagSearch tweetListChange={tweetListChange} hashtagValue={hashtagValue}/>
       </div>
       <div className={styles.lastTweets_div}>
         {tweetList}

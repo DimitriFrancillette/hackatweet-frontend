@@ -15,7 +15,6 @@ function Trends(props) {
     fetch('http://localhost:3000/hashtags/')
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         setHashData(data)
       });
   }, [props.reload]);
