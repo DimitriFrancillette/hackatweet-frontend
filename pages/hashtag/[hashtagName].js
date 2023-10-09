@@ -21,7 +21,11 @@ function Hashtag() {
   const router = useRouter();
   const hashtagName = router.query.hashtagName;
   const user = useSelector((state) => state.user.value);
+  const [reload, setReload] = useState(false);
 
+  useEffect(() => {
+    setReload(!reload);
+  }, [hashtagName])
 
   useEffect(() => {
     fetch('http://localhost:3000/hashtags/')
@@ -31,11 +35,16 @@ function Hashtag() {
         setTweetsReload(!tweetsReload);
 
       });
-  }, [hashtagName]);
+  }, [reload]);
 
   useEffect(() => {
     hashtagValue(hashtagName);
   }, [tweetsReload]);
+
+  const tweetListChange = () => {
+    setTweetsReload(!tweetsReload);
+    setReload(!reload);
+  };
 
   let tweetList = tweetsData.map((data, i) => {
     return <OneTweet key={i}
@@ -73,9 +82,7 @@ function Hashtag() {
     setTweetsData(tweetsArray)
   }
 
-  const tweetListChange = () => {
-    setTweetsReload(!tweetsReload);
-  };
+
 
 
   const handleLogout = () => {

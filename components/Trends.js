@@ -25,7 +25,6 @@ function Trends(props) {
       <Link href={hashLink}>
         <span className={styles.hashTag}>{data.name}</span>
       </Link>
-
       <span className={styles.hashCount}>{data.tweet.length} tweets</span>
     </div>
   });

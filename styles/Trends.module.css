@@ -9,7 +9,7 @@
 }
 
 .trendsBox{
-    width: 95%;
+    width: 90%;
     background-color: #38506B;
     border-radius: 10px;
     display: flex;
@@ -29,6 +29,7 @@
     color: white;
     font-weight: 700;
     margin-bottom: 8px ;
+    cursor: pointer;
 }
 
 .hashCount {
