@@ -1,32 +1,31 @@
 import styles from '../styles/HashtagSearch.module.css';
-import { Input, Button } from 'antd';
+import { Input } from 'antd';
 import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from 'react-redux';
-
+import { useRouter } from 'next/router';
 
 function HashtagSearch(props) {
   const [searchText, setSearchText] = useState('');
+  const router = useRouter();
+  const hashtagName = router.query.hashtagName;
 
+
+  useEffect (() => {
+    if (props.hashtagName !== '0') {
+      setSearchText(hashtagName);
+    }
+  }, [])
 
   const onChange = (e) => {
-    setSearchText(e.target.value);
-    props.hashtagValue(e.target.value);
+    const text = e.target.value;
+    setSearchText(text);
+    props.hashtagValue(text);
+
+    if (text === "") {
+    router.push(`/hashtag/0`);
+    } else {
+      router.push(`/hashtag/${e.target.value}`);
+    }
   };
-
-
-  // const handleTweet = () => {
-
-  //   fetch('http://localhost:3000/tweets/', {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify({ description: tweetText, user: user.userId }),
-  //   }).then(response => response.json())
-  //     .then(data => {
-  //       setNewTweet(data.newTweet);
-  //       props.tweetListChange();
-
-  //     });
-  // };
 
   return (
     <div className={styles.main}>

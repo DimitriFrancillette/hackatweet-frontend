@@ -7,9 +7,6 @@ function Trends(props) {
   const [hashReload, setHashReload] = useState(false);
   const [hashData, setHashData] = useState([]);
 
-  const tweetListChange = () => {
-    setHashReload(!hashReload);
-  };
 
   useEffect(() => {
     fetch('http://localhost:3000/hashtags/')
@@ -20,8 +17,16 @@ function Trends(props) {
   }, [props.reload]);
 
   const hashList = hashData.map((data, i) => {
+
+    const linkParam = data.name.split('#')[1];
+
+    const hashLink = `/hashtag/${linkParam}`;
+    
     return <div key={i} className={styles.hashCard}>
-      <span className={styles.hashTag}>{data.name}</span>
+      <Link href={hashLink}>
+        <span className={styles.hashTag}>{data.name}</span>
+      </Link>
+
       <span className={styles.hashCount}>{data.tweet.length} tweets</span>
     </div>
   });
@@ -29,8 +34,8 @@ function Trends(props) {
   return (
     <div className={styles.main}>
       <div className={styles.title}>
-        <Link href='/hashtag'>
-        <h3>Trends</h3>
+        <Link href='/hashtag/0'>
+          <h3>Trends</h3>
         </Link>
       </div>
       <div className={styles.trendsBox}>
