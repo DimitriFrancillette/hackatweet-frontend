@@ -5,13 +5,11 @@ import { Button, Modal, Input, Space } from 'antd';
 import { useState } from 'react';
 import SignUp from './SignUp';
 import SignIn from './SignIn';
- 
+
 
 function LoginPage() {
-
     const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
     const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
-
 
     const showModal = (param) => {
         param === 'up' ? setIsSignUpModalOpen(true) : setIsSignInModalOpen(true);

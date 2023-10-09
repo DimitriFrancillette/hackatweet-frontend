@@ -1,7 +1,7 @@
 import styles from '../styles/TweetPosting.module.css';
 import { Input, Button } from 'antd';
 import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector} from 'react-redux';
 
 
 function TweetPosting(props) {
@@ -40,7 +40,6 @@ function TweetPosting(props) {
   }, [newTweet]);
 
   const handleTweet = () => {
-
     fetch('http://localhost:3000/tweets/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

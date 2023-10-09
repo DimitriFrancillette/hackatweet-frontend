@@ -28,20 +28,14 @@ function Hashtag() {
       .then(response => response.json())
       .then(data => {
         setHashtagsData(data);
-    setTweetsReload(!tweetsReload);
+        setTweetsReload(!tweetsReload);
 
       });
-  }, [tweetsReload]);
-
+  }, [hashtagName]);
 
   useEffect(() => {
     hashtagValue(hashtagName);
-
   }, [tweetsReload]);
-
-
-
-
 
   let tweetList = tweetsData.map((data, i) => {
     return <OneTweet key={i}
@@ -55,7 +49,6 @@ function Hashtag() {
       tweetListChange={tweetListChange} />
   });
 
-
   const hashtagValue = (value) => {
 
     let filter = hashtagsData.filter((e) => {
@@ -65,15 +58,10 @@ function Hashtag() {
     if (filter.length > 0) {
       tweetsSetUp(filter);
     } else {
-      // tweetsSetUp(hashtagsData)
-      console.log('NOP');
-      tweetList = <p>il n'y a rien</p>
+      tweetsSetUp(hashtagsData);
     }
+    
   };
-
-
-
-
 
   const tweetsSetUp = (data) => {
     const tweetsArray = [];
@@ -84,10 +72,6 @@ function Hashtag() {
     });
     setTweetsData(tweetsArray)
   }
-
-
-
-
 
   const tweetListChange = () => {
     setTweetsReload(!tweetsReload);
@@ -100,12 +84,9 @@ function Hashtag() {
 
   }
 
-
-
-
   let firstPage = <LoginPage />;
 
-  const homePage = <div className={styles.mainHome}>
+  const hashtagPage = <div className={styles.mainHome}>
     <div className={styles.leftSide}>
       <Link href='/'>
         <div className={styles.bird_div}>
@@ -141,7 +122,7 @@ function Hashtag() {
   </div>;
 
   if (user.token !== null) {
-    firstPage = homePage;
+    firstPage = hashtagPage;
   }
 
   return (
@@ -152,4 +133,3 @@ function Hashtag() {
 }
 
 export default Hashtag;
-

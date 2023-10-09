@@ -11,10 +11,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../reducers/user';
 import { useEffect, useState } from 'react';
 
-
-
-
-
 function Home() {
   const dispatch = useDispatch();
   const [tweetsData, setTweetsData] = useState([]);

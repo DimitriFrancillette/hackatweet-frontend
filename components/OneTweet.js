@@ -6,7 +6,6 @@ import { useState, useEffect } from 'react';
 const moment = require('moment');
 
 
-
 function OneTweet(props) {
   const [showTrash, setShowTrash] = useState(false);
   const user = useSelector((state) => state.user.value);

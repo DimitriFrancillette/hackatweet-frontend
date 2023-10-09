@@ -4,7 +4,6 @@ import Link from 'next/Link';
 
 
 function Trends(props) {
-  const [hashReload, setHashReload] = useState(false);
   const [hashData, setHashData] = useState([]);
 
 

@@ -7,7 +7,6 @@ import { useDispatch } from 'react-redux';
 import { login } from '../reducers/user';
 
 
-
 function SignUp(props) {
   const dispatch = useDispatch();
 
@@ -18,7 +17,6 @@ function SignUp(props) {
 
 
   const handleSignUp = () => {
-
     fetch('http://localhost:3000/users/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -38,13 +36,10 @@ function SignUp(props) {
         setFirstname('');
         setUsername('');
         setPassword('');
-
       });
-
   };
 
   const handleCancel = () => {
-    
     const closeModal = () => props.modalCancel('up');
     closeModal();
     setSignUpError(false);
