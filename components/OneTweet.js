@@ -7,7 +7,6 @@ const moment = require('moment');
 
 
 function OneTweet(props) {
-  console.log("PROPS", props)
   const [showTrash, setShowTrash] = useState(false);
   const user = useSelector((state) => state.user.value);
 
@@ -23,8 +22,6 @@ function OneTweet(props) {
 
   const handleLikes = () => {
 
-    // console.log("USER",user);
-    // console.log("LIKES",likesArray);
     const idsearch = likesArray.includes(user.userId)
     console.log(idsearch)
 

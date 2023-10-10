@@ -33,7 +33,6 @@ function Hashtag() {
       .then(data => {
         setHashtagsData(data);
         setTweetsReload(!tweetsReload);
-
       });
   }, [reload]);
 
@@ -59,7 +58,6 @@ function Hashtag() {
   });
 
   const hashtagValue = (value) => {
-
     let filter = hashtagsData.filter((e) => {
       return e.name.includes(`#${value}`);
     });
@@ -69,7 +67,6 @@ function Hashtag() {
     } else {
       tweetsSetUp(hashtagsData);
     }
-    
   };
 
   const tweetsSetUp = (data) => {
@@ -82,13 +79,9 @@ function Hashtag() {
     setTweetsData(tweetsArray)
   }
 
-
-
-
   const handleLogout = () => {
     dispatch(logout())
     router.push(`/`);
-
   }
 
   let firstPage = <LoginPage />;
@@ -134,7 +127,7 @@ function Hashtag() {
 
   return (
     <>
-      {firstPage};
+      {firstPage}
     </>
   );
 }

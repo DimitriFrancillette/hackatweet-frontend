@@ -24,6 +24,12 @@
     transform: rotate(3.142rad);
 }
 
+.bird:hover{
+    height: 70px;
+    width: 70px;
+    transform: rotate(6.142rad);
+}
+
 .user_div {
     margin: 0rem 0rem 1.5rem 1.5rem;
 }

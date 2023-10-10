@@ -21,6 +21,13 @@
     height: 60px;
     width: 60px;
     transform: rotate(3.142rad);
+    cursor: pointer;
+}
+
+.bird:hover{
+    height: 70px;
+    width: 70px;
+    transform: rotate(6.142rad);
 }
 
 .user_div {

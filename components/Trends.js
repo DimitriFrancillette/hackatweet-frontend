@@ -33,7 +33,7 @@ function Trends(props) {
     <div className={styles.main}>
       <div className={styles.title}>
         <Link href='/hashtag/0'>
-          <h3>Trends</h3>
+          <h3 className={styles.titleText}>Trends</h3>
         </Link>
       </div>
       <div className={styles.trendsBox}>

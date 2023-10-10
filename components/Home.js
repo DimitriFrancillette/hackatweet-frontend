@@ -21,7 +21,6 @@ function Home() {
     fetch('http://localhost:3000/tweets/')
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         setTweetsData(data)
       });
   }, [tweetsReload]);

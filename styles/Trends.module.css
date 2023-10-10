@@ -8,6 +8,10 @@
     cursor: pointer;
 }
 
+.title:hover {
+    color: #4096FF;
+  }
+
 .trendsBox{
     width: 90%;
     background-color: #38506B;
@@ -31,6 +35,10 @@
     margin-bottom: 8px ;
     cursor: pointer;
 }
+
+.hashTag:hover {
+    color: #4096FF;
+  }
 
 .hashCount {
     font-size: 12px;
