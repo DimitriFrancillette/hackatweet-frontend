@@ -6,7 +6,7 @@ Il s'agit d'un projet dont l'objectif est de créer un site similaire à Tweeter
 
 ### Front End
 
-La partie front end du projet a été codée en *Javascript* avec *React*, *Redux*, *Next* et *Ant Design*.
+La partie front end du projet a été codée en *Javascript* avec *React*, *Redux*, *Next*, *Font Awesome* et *Ant Design*.
 
 ### Back End
 
