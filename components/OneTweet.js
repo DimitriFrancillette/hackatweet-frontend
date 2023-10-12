@@ -21,7 +21,6 @@ function OneTweet(props) {
   const likesNumber = likesArray.length;
 
   const handleLikes = () => {
-
     const idsearch = likesArray.includes(user.userId)
     console.log(idsearch)
 
@@ -31,7 +30,7 @@ function OneTweet(props) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId: user.userId }),
       }).then(response => response.json())
-        .then(data => {
+        .then(() => {
           props.tweetListChange();
         });
       return;
@@ -42,7 +41,7 @@ function OneTweet(props) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userId: user.userId }),
     }).then(response => response.json())
-      .then(data => {
+      .then(() => {
         props.tweetListChange();
       });
   };
@@ -55,22 +54,18 @@ function OneTweet(props) {
   }, []);
 
   const deleteTweet = () => {
-
     const hashtagRegex = /#(\w+)/g;
     const words = props.description.split(' ');
-    words.map((word)=> {
+
+    words.map((word) => {
       const isHashtag = word.match(hashtagRegex);
 
       if (isHashtag) {
-
         fetch('http://localhost:3000/hashtags/', {
           method: 'DELETE',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name: word, tweetId: props.tweetId }),
-        }).then(response => response.json())
-          .then(data => {
-
-          });
+        })
       }
     });
 
@@ -78,7 +73,7 @@ function OneTweet(props) {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
     }).then(response => response.json())
-      .then(data => {
+      .then(() => {
         props.tweetListChange();
       });
   };
@@ -97,15 +92,15 @@ function OneTweet(props) {
           const isHashtag = word.match(hashtagRegex);
 
           if (isHashtag) {
-            
+
             //Si c'est le cas on l'affiche avec un style
             return (
               <span
                 key={index}
-                style={{ color: '#4096FF', fontWeight: 'bold' }} // Customize styling
+                style={{ color: '#4096FF', fontWeight: 'bold' }}
               > {word} </span>
             );
-            
+
           } else {
             //Sinon on le renvoi normalement
             return <span key={index}> {word} </span>;

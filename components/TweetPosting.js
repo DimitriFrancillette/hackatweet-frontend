@@ -48,7 +48,7 @@ function TweetPosting(props) {
       .then(data => {
         setNewTweet(data.newTweet);
         props.tweetListChange();
-
+        setTweetText('');
       });
   };
 
