@@ -1,0 +1,51 @@
+.tweetCard {
+    height: 170px;
+    border: solid #666a7c 1.5px;
+    padding-top: 2%;
+    padding-right: 3%;
+    padding-bottom: 2%;
+    padding-left: 3%;
+
+}
+
+.userInfo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.egg {
+    height: 40px;
+    width: 40px;
+    background-color: #4096FF;
+    border-radius: 50%;
+    padding: 5px;
+    margin-right: 15px;
+}
+
+.userFirstname {
+    font-weight: bold;
+    margin-right: 5px;
+    color: white;
+}
+
+.userUsername {
+    color: #666a7c;
+    margin-right: 5px;
+}
+
+.tweetTime{
+    color: #666a7c;
+}
+
+.tweetText {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.likeCount {
+    margin-left: 10px;
+    margin-right: 10px;
+    color: white;
+}

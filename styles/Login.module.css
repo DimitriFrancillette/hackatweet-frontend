@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;900&family=Noto+Sans:wght@200;400&display=swap');
+
+.main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  font-family: 'Montserrat';
+}
+
+.leftSide {
+  height: 100%;
+  width: 40%;
+  background-image: url('/loginImage.png');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bigBird {
+  height: 350px;
+  width: 350px;
+  transform: rotate(3.142rad);
+}
+
+.rightSide {
+  height: 100vh;
+  width: 60%;
+  background-color: #2a3c50;
+  padding-left: 2rem;
+  color: white;
+}
+
+.bird_div {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.bird {
+  height: 60px;
+  width: 60px;
+  transform: rotate(3.142rad);
+}
+
+.text_div {
+  width: 50%;
+}
+.bigTitle {
+  font-size: 75px;
+  font-weight: 900;
+}
+
+.smallTitle {
+  font-size: 40px;
+}
+
+.buttons_div {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+.signUpbutton {
+  border-radius: 30px;
+  width: 250px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: bolder;
+  margin: 20px 0px 20px 0px;
+}
+
+.signText {
+  margin-left: 12px;
+  font-weight: bolder;
+}
+.signInbutton {
+  border-radius: 30px;
+  width: 250px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: bolder;
+  background-color: #2a3c50;
+  border: solid grey 1.5px;
+  color: #4096ff;
+  margin: 20px 0px 20px 0px;
+}

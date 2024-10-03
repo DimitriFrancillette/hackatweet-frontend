@@ -1,0 +1,82 @@
+.mainHome {
+    display: flex;
+    height: 100vh;
+    background-color: #2A3C50;
+    /* min-height: 100vh; */
+}
+
+.leftSide {
+    height: 95vh;
+    width: 24%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.bird_div {
+    margin: 1.5rem 0rem 0rem 1.5rem;
+    cursor: pointer;
+}
+
+.bird {
+    height: 60px;
+    width: 60px;
+    transform: rotate(3.142rad);
+}
+
+.bird:hover{
+    height: 70px;
+    width: 70px;
+    transform: rotate(6.142rad);
+}
+
+.user_div {
+    margin: 0rem 0rem 1.5rem 1.5rem;
+}
+
+.userInfos {
+    display: flex;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.egg {
+    height: 40px;
+    width: 40px;
+    background-color: #4096FF;
+    border-radius: 50%;
+    padding: 5px;
+    margin-right: 15px;
+}
+
+.userFirstname {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.userUsername {
+    color: #666a7c;
+}
+
+.middle {
+    height: 100%;
+    width: 42%;
+    background-color: #2A3C50;
+    border-left: solid #666a7c 1.5px;
+    border-right: solid #666a7c 1.5px;
+}
+
+.tweet_div {
+    height: 15%;
+    border-bottom: solid #666a7c 1.5px;
+}
+
+.lastTweets_div {
+    height: 81.9%;
+    overflow-y: auto;
+
+}
+
+.rightSide {
+    width: 34%;
+}

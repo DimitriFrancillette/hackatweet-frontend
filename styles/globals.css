@@ -1,0 +1,29 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  height: 100%;
+  /* min-height: 90vh ; */
+}
+
+/* * {
+  box-sizing: border-box;
+} */
+
+/* css background des modals */
+.ant-modal .ant-modal-content {
+  background-color: #2a3c50;
+}
+
+/* css placeholder des modals */
+.ant-modal .ant-modal-content ::placeholder {
+  color: white;
+}
+
+/* css champs de saisie tweet */
+.ant-input-textarea-show-count > .ant-input {
+  background-color: #2a3c50;
+  color: white;
+}
