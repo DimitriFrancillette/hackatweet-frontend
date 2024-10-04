@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { login } from '../reducers/user';
+import { login } from '../redux/reducers/user';
 
 function SignIn(props) {
   const dispatch = useDispatch();
