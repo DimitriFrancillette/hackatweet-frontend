@@ -101,7 +101,7 @@ function SignUp(props) {
         </Space>
         {signUpError && (
           <p className={styles.modaleError}>
-            L'utilisateur existe déja ou l'un des champs est éronné
+            User already exists or a field is incorrect
           </p>
         )}
       </Modal>

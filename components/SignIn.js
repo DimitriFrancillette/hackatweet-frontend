@@ -84,9 +84,7 @@ function SignIn(props) {
           />
         </Space>
         {signInError && (
-          <p className={styles.modaleError}>
-            Mauvais login ou mauvais mot de passe
-          </p>
+          <p className={styles.modaleError}>Wrong login or wrong password</p>
         )}
       </Modal>
     </div>

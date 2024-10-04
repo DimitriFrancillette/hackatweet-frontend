@@ -23,7 +23,12 @@ body {
 }
 
 /* css champs de saisie tweet */
-.ant-input-textarea-show-count > .ant-input {
-  background-color: #2a3c50;
-  color: white;
+/* .ant-input-textarea-show-count > .ant-input {
+  background-color: red;
+  color: greenyellow;
+} */
+
+.ant-input-textarea-show-count {
+  background-color: red;
+  color: greenyellow;
 }

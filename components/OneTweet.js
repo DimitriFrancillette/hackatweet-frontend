@@ -104,7 +104,7 @@ function OneTweet(props) {
             );
           } else {
             //Sinon on le renvoi normalement
-            return <span key={index}> {word} </span>;
+            return `${word} `;
           }
         })}
       </span>
