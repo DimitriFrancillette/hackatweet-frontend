@@ -1,27 +1,26 @@
 'use client';
-import styles from '../../styles/Hashtag.module.css';
+import styles from '../../../styles/Hashtag.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faEgg } from '@fortawesome/free-solid-svg-icons';
 import { Button } from 'antd';
-import LoginPage from '../../components/LoginPage';
-import Trends from '../../components/Trends';
-import HashtagSearch from '../../components/HashtagSearch';
-import OneTweet from '../../components/OneTweet';
+import LoginPage from '../../../components/LoginPage';
+import Trends from '../../../components/Trends';
+import HashtagSearch from '../../../components/HashtagSearch';
+import OneTweet from '../../../components/OneTweet';
 import { useSelector, useDispatch } from 'react-redux';
-import { logout } from '../../redux/reducers/user';
+import { logout } from '../../../redux/reducers/user';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
-import { useRouter } from 'next/router';
-
-function Hashtag() {
+function Hashtag({ params }) {
   const dispatch = useDispatch();
   const [hashtagsData, setHashtagsData] = useState([]);
   const [tweetsData, setTweetsData] = useState([]);
   const [tweetsReload, setTweetsReload] = useState(false);
   const router = useRouter();
-  const hashtagName = router.query.hashtagName;
+  const hashtagName = params.hashtag;
   const user = useSelector((state) => state.user.value);
   const [reload, setReload] = useState(false);
 
@@ -33,6 +32,8 @@ function Hashtag() {
     fetch('http://localhost:3008/hashtags/')
       .then((response) => response.json())
       .then((data) => {
+        console.log('data', data);
+
         setHashtagsData(data);
         setTweetsReload(!tweetsReload);
       });

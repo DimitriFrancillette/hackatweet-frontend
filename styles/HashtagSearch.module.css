@@ -1,25 +1,28 @@
 .main {
-    color: white;
-    padding-left: 20px;
+  color: white;
+  padding-left: 20px;
 }
 
 .title_div {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .input_div {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .searchHashtag {
-    width: 600px;
-    border: solid 3px #666a7c;
-    background-color: #2A3C50;
-    border-radius: 20px;
-    color: white;
+  width: 600px;
+  border: solid 3px #666a7c;
+  background-color: #2a3c50;
+  border-radius: 20px;
+  color: rgb(107, 105, 105);
+  font-size: large;
+  font-weight: bold;
+  padding-bottom: 10px;
 }
 
-.searchHashtag::placeholder{
-    color: white;
+.searchHashtag::placeholder {
+  color: white;
 }
