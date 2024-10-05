@@ -36,7 +36,7 @@ function HashtagSearch(props) {
     props.hashtagValue(text);
   };
 
-  //quand l'url change le focus se fait sur la bar de recherche
+  //quand l'url change, le focus se fait sur la bar de recherche
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();

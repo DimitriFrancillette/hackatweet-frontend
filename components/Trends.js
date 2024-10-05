@@ -30,11 +30,9 @@ function Trends(props) {
 
   return (
     <div className={styles.main}>
-      <div className={styles.title}>
-        <Link href='/hashtag/0'>
-          <h3 className={styles.titleText}>Trends</h3>
-        </Link>
-      </div>
+      <Link className={styles.title} href='/hashtag/0'>
+        <h3>Trends</h3>
+      </Link>
       <div className={styles.trendsBox}>{hashList}</div>
     </div>
   );

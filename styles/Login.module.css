@@ -83,3 +83,11 @@
   color: #4096ff;
   margin: 20px 0px 20px 0px;
 }
+
+.emphasis {
+  font-style: italic;
+  font-size: large;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  color: #4096ff;
+}

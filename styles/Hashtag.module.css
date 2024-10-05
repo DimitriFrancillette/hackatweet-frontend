@@ -2,7 +2,6 @@
   display: flex;
   height: 100vh;
   background-color: #2a3c50;
-  /* min-height: 100vh; */
 }
 
 .leftSide {
@@ -28,6 +27,18 @@
   height: 70px;
   width: 70px;
   transform: rotate(6.142rad);
+}
+
+.birdText {
+  color: white;
+  font-weight: bold;
+  margin-left: 10px;
+  text-decoration: none;
+}
+.birdText:hover {
+  color: #4096ff;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .user_div {

@@ -61,6 +61,12 @@ function LoginPage() {
           </Button>
         </div>
 
+        <p>
+          Sign up to be able to{' '}
+          <span className={styles.emphasis}>see the latest tweets</span> and{' '}
+          <span className={styles.emphasis}>add your own</span>.
+        </p>
+
         {/* utilisation des props et du inverse data flow pour faire transiter les informations necessaires à l'ouverture et fermeture des modals */}
         <SignUp
           modalState={isSignUpModalOpen}

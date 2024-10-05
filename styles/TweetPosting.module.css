@@ -4,7 +4,7 @@
 }
 
 .title_div {
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .input_div {
@@ -16,9 +16,17 @@
   width: 600px;
   border: solid 3px #666a7c;
   background-color: #2a3c50;
-  color: rgb(107, 105, 105);
+  color: white;
   font-size: large;
   font-weight: bold;
+}
+
+.textArea:focus {
+  background-color: #31465e;
+}
+
+.textArea:hover {
+  background-color: #31465e;
 }
 
 .textArea::placeholder {

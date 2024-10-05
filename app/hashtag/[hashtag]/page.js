@@ -32,8 +32,6 @@ function Hashtag({ params }) {
     fetch('http://localhost:3008/hashtags/')
       .then((response) => response.json())
       .then((data) => {
-        console.log('data', data);
-
         setHashtagsData(data);
         setTweetsReload(!tweetsReload);
       });
@@ -96,7 +94,7 @@ function Hashtag({ params }) {
   const hashtagPage = (
     <div className={styles.mainHome}>
       <div className={styles.leftSide}>
-        <Link href='/'>
+        <Link href='/' className={styles.birdText}>
           <div className={styles.bird_div}>
             <FontAwesomeIcon
               icon={faTwitter}
@@ -104,6 +102,7 @@ function Hashtag({ params }) {
               style={{ color: '#ffffff' }}
             />
           </div>
+          <p>fly back to Home</p>
         </Link>
         <div className={styles.user_div}>
           <div className={styles.userInfos}>

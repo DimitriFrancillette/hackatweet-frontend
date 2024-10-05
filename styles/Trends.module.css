@@ -3,13 +3,15 @@
 }
 
 .title {
-  font-size: 20px;
+  font-size: 25px;
+  text-decoration: none;
   color: white;
   cursor: pointer;
 }
-
 .title:hover {
   color: #4096ff;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .trendsBox {
