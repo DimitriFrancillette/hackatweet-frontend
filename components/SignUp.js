@@ -15,7 +15,7 @@ function SignUp(props) {
   const [signUpError, setSignUpError] = useState(false);
 
   const handleSignUp = () => {
-    fetch('http://localhost:3008/users/signup', {
+    fetch('https://hackhatweet-backend-ten.vercel.app/users/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

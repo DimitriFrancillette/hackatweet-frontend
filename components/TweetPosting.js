@@ -41,7 +41,7 @@ function TweetPosting(props) {
         const isHashtag = word.match(hashtagRegex);
 
         if (isHashtag) {
-          fetch('http://localhost:3008/hashtags/', {
+          fetch('https://hackhatweet-backend-ten.vercel.app/hashtags/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name: word, tweetId: newTweet._id }),
