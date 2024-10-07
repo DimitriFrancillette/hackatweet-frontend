@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../redux/reducers/user';
 
-function SignIn(props) {
+function SignIn({ modalOk, modalCancel, modalState }) {
   const dispatch = useDispatch();
 
   const [username, setUsername] = useState('');
@@ -32,7 +32,7 @@ function SignIn(props) {
           );
           setUsername('');
           setPassword('');
-          props.modalOk();
+          modalOk();
         }
         setUsername('');
         setPassword('');
@@ -41,7 +41,7 @@ function SignIn(props) {
   };
 
   const handleCancel = () => {
-    const closeModal = () => props.modalCancel();
+    const closeModal = () => modalCancel();
     closeModal();
     setSignInError(false);
   };
@@ -49,7 +49,7 @@ function SignIn(props) {
   return (
     <div className={styles.main}>
       <Modal
-        open={props.modalState}
+        open={modalState}
         onCancel={() => handleCancel()}
         centered
         style={{ height: 350 }}

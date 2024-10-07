@@ -5,18 +5,27 @@ import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 const moment = require('moment');
 
-function OneTweet(props) {
+function OneTweet({
+  postedDate,
+  likes,
+  tweetId,
+  userId,
+  tweetListChange,
+  description,
+  firstname,
+  username,
+}) {
   const [showTrash, setShowTrash] = useState(false);
   const user = useSelector((state) => state.user.value);
 
   let heartStyle = { color: '#ffffff', cursor: 'pointer' };
-  if (props.likes.length > 0) {
+  if (likes.length > 0) {
     heartStyle = { color: 'red', cursor: 'pointer' };
   }
 
-  const fromNow = moment(props.postedDate).fromNow(true);
+  const fromNow = moment(postedDate).fromNow(true);
 
-  const likesArray = props.likes;
+  const likesArray = likes;
   const likesNumber = likesArray.length;
 
   const handleLikes = () => {
@@ -25,7 +34,7 @@ function OneTweet(props) {
 
     if (!idsearch) {
       fetch(
-        `https://hackhatweet-backend-ten.vercel.app/tweets/like/${props.tweetId}`,
+        `https://hackhatweet-backend-ten.vercel.app/tweets/like/${tweetId}`,
         {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
@@ -34,13 +43,13 @@ function OneTweet(props) {
       )
         .then((response) => response.json())
         .then(() => {
-          props.tweetListChange();
+          tweetListChange();
         });
       return;
     }
 
     fetch(
-      `https://hackhatweet-backend-ten.vercel.app/tweets/unlike/${props.tweetId}`,
+      `https://hackhatweet-backend-ten.vercel.app/tweets/unlike/${tweetId}`,
       {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
@@ -49,19 +58,19 @@ function OneTweet(props) {
     )
       .then((response) => response.json())
       .then(() => {
-        props.tweetListChange();
+        tweetListChange();
       });
   };
 
   useEffect(() => {
-    if (props.userId === user.userId) {
+    if (userId === user.userId) {
       setShowTrash(true);
     }
-  }, []);
+  }, [userId, user.userId]);
 
   const deleteTweet = () => {
     const hashtagRegex = /#(\w+)/g;
-    const words = props.description.split(' ');
+    const words = description.split(' ');
 
     words.map((word) => {
       const isHashtag = word.match(hashtagRegex);
@@ -70,21 +79,18 @@ function OneTweet(props) {
         fetch('https://hackhatweet-backend-ten.vercel.app/hashtags/', {
           method: 'DELETE',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name: word, tweetId: props.tweetId }),
+          body: JSON.stringify({ name: word, tweetId: tweetId }),
         });
       }
     });
 
-    fetch(
-      `https://hackhatweet-backend-ten.vercel.app/tweets/${props.tweetId}`,
-      {
-        method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
-      }
-    )
+    fetch(`https://hackhatweet-backend-ten.vercel.app/tweets/${tweetId}`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+    })
       .then((response) => response.json())
       .then(() => {
-        props.tweetListChange();
+        tweetListChange();
       });
   };
 
@@ -92,7 +98,7 @@ function OneTweet(props) {
   function Sentence() {
     const hashtagRegex = /#(\w+)/g;
     //on sépare les mots dans un tableau
-    const words = props.description.split(' ');
+    const words = description.split(' ');
 
     return (
       <span>
@@ -129,8 +135,8 @@ function OneTweet(props) {
             className={styles.egg}
             style={{ color: '#ffffff' }}
           />
-          <div className={styles.userFirstname}>{props.firstname}</div>
-          <div className={styles.userUsername}>@{props.username}</div>
+          <div className={styles.userFirstname}>{firstname}</div>
+          <div className={styles.userUsername}>@{username}</div>
           <div className={styles.tweetTime}>. {fromNow}</div>
         </div>
         <div className={styles.tweetText}>

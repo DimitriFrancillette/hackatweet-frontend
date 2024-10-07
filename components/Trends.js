@@ -2,7 +2,7 @@ import styles from '../styles/Trends.module.css';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
-function Trends(props) {
+function Trends({ reload }) {
   const [hashData, setHashData] = useState([]);
 
   useEffect(() => {
@@ -11,7 +11,7 @@ function Trends(props) {
       .then((data) => {
         setHashData(data);
       });
-  }, [props.reload]);
+  }, [reload]);
 
   const hashList = hashData.map((data, i) => {
     const linkParam = data.name.split('#')[1];

@@ -3,37 +3,42 @@ import { Input } from 'antd';
 import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 
-function HashtagSearch(props) {
+function HashtagSearch({ hashtagName, hashtagValue }) {
   const [searchText, setSearchText] = useState('');
   const router = useRouter();
-  const hashtagName = props.hashtagName;
   const inputRef = useRef(null);
 
   useEffect(() => {
-    if (hashtagName !== '0') {
-      setSearchText(hashtagName);
-    }
-  }, []);
+    setSearchText((prevSearchText) => {
+      if (hashtagName !== '0') {
+        return hashtagName;
+      }
+      return prevSearchText;
+    });
+  }, [hashtagName]);
 
   //l'url change seulement 0.5 sec après que le user est fini de taper
   useEffect(() => {
-    const handler = setTimeout(() => {
+    const updateRouter = () => {
       if (searchText === '') {
         router.push(`/hashtag/0`);
       } else {
         router.push(`/hashtag/${searchText}`);
       }
-    }, 500);
+    };
 
+    const handler = setTimeout(updateRouter, 500);
+
+    // clean up le timeout si searchText change ou le composant se démontes
     return () => {
       clearTimeout(handler);
     };
-  }, [searchText]);
+  }, [searchText, router]);
 
   const onChange = (e) => {
     const text = e.target.value;
     setSearchText(text);
-    props.hashtagValue(text);
+    hashtagValue(text);
   };
 
   //quand l'url change, le focus se fait sur la bar de recherche

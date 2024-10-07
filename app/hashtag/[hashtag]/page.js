@@ -10,7 +10,7 @@ import HashtagSearch from '../../../components/HashtagSearch';
 import OneTweet from '../../../components/OneTweet';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../../redux/reducers/user';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
@@ -25,7 +25,7 @@ function Hashtag({ params }) {
   const [reload, setReload] = useState(false);
 
   useEffect(() => {
-    setReload(!reload);
+    setReload((prevReload) => !prevReload);
   }, [hashtagName]);
 
   useEffect(() => {
@@ -33,13 +33,13 @@ function Hashtag({ params }) {
       .then((response) => response.json())
       .then((data) => {
         setHashtagsData(data);
-        setTweetsReload(!tweetsReload);
+        setTweetsReload((prevTweetsReload) => !prevTweetsReload);
       });
   }, [reload]);
 
   useEffect(() => {
     hashtagValue(hashtagName);
-  }, [tweetsReload]);
+  }, [tweetsReload, hashtagName, hashtagValue]);
 
   const tweetListChange = () => {
     setTweetsReload(!tweetsReload);
@@ -62,17 +62,20 @@ function Hashtag({ params }) {
     );
   });
 
-  const hashtagValue = (value) => {
-    let filter = hashtagsData.filter((e) => {
-      return e.name.includes(`#${value}`);
-    });
+  const hashtagValue = useCallback(
+    (value) => {
+      let filter = hashtagsData.filter((e) => {
+        return e.name.includes(`#${value}`);
+      });
 
-    if (filter.length > 0) {
-      tweetsSetUp(filter);
-    } else {
-      tweetsSetUp(hashtagsData);
-    }
-  };
+      if (filter.length > 0) {
+        tweetsSetUp(filter);
+      } else {
+        tweetsSetUp(hashtagsData);
+      }
+    },
+    [hashtagsData, tweetsSetUp]
+  );
 
   const tweetsSetUp = (data) => {
     const tweetsArray = [];
