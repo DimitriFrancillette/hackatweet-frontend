@@ -40,7 +40,7 @@ function LoginPage() {
           />
         </div>
         <div className={styles.text_div}>
-          <h1 className={styles.bigTitle}>See what's happening</h1>
+          <h1 className={styles.bigTitle}>See what&apos;s happening</h1>
           <h2 className={styles.smallTitle}>Join Hackatweet today.</h2>
         </div>
         <div className={styles.buttons_div}>
