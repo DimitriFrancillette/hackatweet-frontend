@@ -10,7 +10,7 @@ import HashtagSearch from '../../../components/HashtagSearch';
 import OneTweet from '../../../components/OneTweet';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../../redux/reducers/user';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
@@ -39,7 +39,7 @@ function Hashtag({ params }) {
 
   useEffect(() => {
     hashtagValue(hashtagName);
-  }, [tweetsReload, hashtagName, hashtagValue]);
+  }, [tweetsReload]);
 
   const tweetListChange = () => {
     setTweetsReload(!tweetsReload);
@@ -62,20 +62,17 @@ function Hashtag({ params }) {
     );
   });
 
-  const hashtagValue = useCallback(
-    (value) => {
-      let filter = hashtagsData.filter((e) => {
-        return e.name.includes(`#${value}`);
-      });
+  const hashtagValue = (value) => {
+    let filter = hashtagsData.filter((e) => {
+      return e.name.includes(`#${value}`);
+    });
 
-      if (filter.length > 0) {
-        tweetsSetUp(filter);
-      } else {
-        tweetsSetUp(hashtagsData);
-      }
-    },
-    [hashtagsData, tweetsSetUp]
-  );
+    if (filter.length > 0) {
+      tweetsSetUp(filter);
+    } else {
+      tweetsSetUp(hashtagsData);
+    }
+  };
 
   const tweetsSetUp = (data) => {
     const tweetsArray = [];

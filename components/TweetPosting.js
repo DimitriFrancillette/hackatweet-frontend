@@ -54,7 +54,7 @@ function TweetPosting({ tweetListChange }) {
         }
       });
     }
-  }, [newTweet, tweetListChange]);
+  }, [newTweet]);
 
   return (
     <div className={styles.main}>

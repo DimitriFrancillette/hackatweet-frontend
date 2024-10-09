@@ -30,7 +30,6 @@ function OneTweet({
 
   const handleLikes = () => {
     const idsearch = likesArray.includes(user.userId);
-    console.log(idsearch);
 
     if (!idsearch) {
       fetch(
@@ -66,7 +65,7 @@ function OneTweet({
     if (userId === user.userId) {
       setShowTrash(true);
     }
-  }, [userId, user.userId]);
+  }, []);
 
   const deleteTweet = () => {
     const hashtagRegex = /#(\w+)/g;
