@@ -18,7 +18,7 @@ function MainPage() {
   const [tweetsReload, setTweetsReload] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost:3008/tweets/')
+    fetch('https://hackhatweet-backend-ten.vercel.app/tweets/')
       .then((response) => response.json())
       .then((data) => {
         setTweetsData(data);

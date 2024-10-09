@@ -6,7 +6,7 @@ function Trends(props) {
   const [hashData, setHashData] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3008/hashtags/')
+    fetch('https://hackhatweet-backend-ten.vercel.app/hashtags/')
       .then((response) => response.json())
       .then((data) => {
         setHashData(data);

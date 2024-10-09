@@ -24,11 +24,14 @@ function OneTweet(props) {
     console.log(idsearch);
 
     if (!idsearch) {
-      fetch(`http://localhost:3008/tweets/like/${props.tweetId}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userId: user.userId }),
-      })
+      fetch(
+        `https://hackhatweet-backend-ten.vercel.app/tweets/like/${props.tweetId}`,
+        {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ userId: user.userId }),
+        }
+      )
         .then((response) => response.json())
         .then(() => {
           props.tweetListChange();
@@ -36,11 +39,14 @@ function OneTweet(props) {
       return;
     }
 
-    fetch(`http://localhost:3008/tweets/unlike/${props.tweetId}`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userId: user.userId }),
-    })
+    fetch(
+      `https://hackhatweet-backend-ten.vercel.app/tweets/unlike/${props.tweetId}`,
+      {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId: user.userId }),
+      }
+    )
       .then((response) => response.json())
       .then(() => {
         props.tweetListChange();
@@ -61,7 +67,7 @@ function OneTweet(props) {
       const isHashtag = word.match(hashtagRegex);
 
       if (isHashtag) {
-        fetch('http://localhost:3008/hashtags/', {
+        fetch('https://hackhatweet-backend-ten.vercel.app/hashtags/', {
           method: 'DELETE',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name: word, tweetId: props.tweetId }),
@@ -69,10 +75,13 @@ function OneTweet(props) {
       }
     });
 
-    fetch(`http://localhost:3008/tweets/${props.tweetId}`, {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
-    })
+    fetch(
+      `https://hackhatweet-backend-ten.vercel.app/tweets/${props.tweetId}`,
+      {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+      }
+    )
       .then((response) => response.json())
       .then(() => {
         props.tweetListChange();
