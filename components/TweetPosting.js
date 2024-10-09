@@ -17,7 +17,7 @@ function TweetPosting({ tweetListChange }) {
   const user = useSelector((state) => state.user.value);
 
   const handleTweet = () => {
-    fetch('http://localhost:3008/tweets/', {
+    fetch('https://hackhatweet-backend-ten.vercel.app/tweets/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ description: tweetText, user: user.userId }),
