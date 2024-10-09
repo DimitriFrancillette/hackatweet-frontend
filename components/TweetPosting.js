@@ -3,7 +3,7 @@ import { Input, Button } from 'antd';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-function TweetPosting(props) {
+function TweetPosting({ tweetListChange }) {
   const [letterCount, setLetterCount] = useState(0);
   const [tweetText, setTweetText] = useState('');
   const [newTweet, setNewTweet] = useState({});
@@ -25,7 +25,7 @@ function TweetPosting(props) {
       .then((response) => response.json())
       .then((data) => {
         setNewTweet(data.newTweet);
-        props.tweetListChange();
+        tweetListChange();
 
         setTweetText('');
       });
@@ -48,7 +48,7 @@ function TweetPosting(props) {
           })
             .then((response) => response.json())
             .then((data) => {
-              props.tweetListChange();
+              tweetListChange();
             });
         }
       });

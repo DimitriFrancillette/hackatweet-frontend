@@ -3,10 +3,9 @@ import { Input } from 'antd';
 import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 
-function HashtagSearch(props) {
+function HashtagSearch({ hashtagName, hashtagValue }) {
   const [searchText, setSearchText] = useState('');
   const router = useRouter();
-  const hashtagName = props.hashtagName;
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -33,7 +32,7 @@ function HashtagSearch(props) {
   const onChange = (e) => {
     const text = e.target.value;
     setSearchText(text);
-    props.hashtagValue(text);
+    hashtagValue(text);
   };
 
   //quand l'url change, le focus se fait sur la bar de recherche
