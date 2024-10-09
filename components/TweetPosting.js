@@ -26,6 +26,8 @@ function TweetPosting({ tweetListChange }) {
       .then((data) => {
         setNewTweet(data.newTweet);
         tweetListChange();
+        tweetListChange();
+
         setTweetText('');
       });
   };

@@ -6,14 +6,14 @@ import { useState, useEffect } from 'react';
 const moment = require('moment');
 
 function OneTweet({
-  postedDate,
-  likes,
-  tweetId,
-  userId,
-  tweetListChange,
-  description,
   firstname,
   username,
+  likes,
+  tweetId,
+  postedDate,
+  tweetListChange,
+  userId,
+  description,
 }) {
   const [showTrash, setShowTrash] = useState(false);
   const user = useSelector((state) => state.user.value);
