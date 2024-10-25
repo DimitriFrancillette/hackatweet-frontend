@@ -51,7 +51,7 @@ function LoginPage() {
           >
             Sign up
           </Button>
-          <span className={styles.signText}>Already have an account?</span>
+          <span className={styles.signText}>Already have an account ?</span>
           <Button
             type='primary'
             onClick={() => showModal()}
