@@ -1,7 +1,7 @@
 .mainHome {
   display: flex;
   height: 100vh;
-  background-color: #2a3c50;
+  background: linear-gradient(to bottom right, #4096ff, #2a3c50 55%);
 }
 
 .leftSide {
@@ -21,12 +21,14 @@
   height: 60px;
   width: 60px;
   transform: rotate(3.142rad);
+  transition-duration: 0.75s;
 }
 
 .bird:hover {
   height: 70px;
   width: 70px;
   transform: rotate(6.142rad);
+  transition-duration: 0.75s;
 }
 
 .birdText {
@@ -36,7 +38,7 @@
   text-decoration: none;
 }
 .birdText:hover {
-  color: #4096ff;
+  color: rgb(26, 25, 25, 0.8);
   text-decoration: underline;
   text-underline-offset: 4px;
 }

@@ -25,7 +25,7 @@
 .rightSide {
   height: 100vh;
   width: 60%;
-  background-color: #2a3c50;
+  background: linear-gradient(to top left, #4096ff, #2a3c50 40%);
   padding-left: 2rem;
   color: rgb(241, 233, 233);
 }

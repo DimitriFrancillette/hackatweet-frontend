@@ -1,7 +1,7 @@
 .mainHome {
   display: flex;
   height: 100vh;
-  background-color: #2a3c50;
+  background: linear-gradient(to bottom left, #4096ff, #2a3c50 55%);
 }
 
 .leftSide {
@@ -20,6 +20,7 @@
   height: 60px;
   width: 60px;
   transform: rotate(3.142rad);
+  transition-duration: 0.75s;
   cursor: pointer;
 }
 
@@ -27,6 +28,7 @@
   height: 70px;
   width: 70px;
   transform: rotate(6.142rad);
+  transition-duration: 0.75s;
 }
 
 .user_div {
