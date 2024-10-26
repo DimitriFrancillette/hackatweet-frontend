@@ -1,14 +1,12 @@
 .mainHome {
   display: flex;
-  height: 100vh;
-  background: linear-gradient(to bottom right, #4096ff, #2a3c50 55%);
+  flex-direction: column;
+  background: linear-gradient(to top left, #4096ff, #2a3c50 55%);
 }
 
 .leftSide {
-  height: 95vh;
-  width: 24%;
   display: flex;
-  flex-direction: column;
+  height: 10vh;
   justify-content: space-between;
 }
 
@@ -22,35 +20,45 @@
   width: 60px;
   transform: rotate(3.142rad);
   transition-duration: 0.75s;
+  margin-right: 10px;
 }
 
 .bird:hover {
-  height: 70px;
-  width: 70px;
+  height: 60px;
+  width: 60px;
   transform: rotate(6.142rad);
   transition-duration: 0.75s;
+}
+
+.linkText {
+  margin-top: 40px;
 }
 
 .birdText {
   color: white;
   font-weight: bold;
-  margin-left: 10px;
   text-decoration: none;
+  display: flex;
+  align-items: center;
 }
 .birdText:hover {
-  color: rgb(26, 25, 25, 0.8);
+  color: #4096ff;
   text-decoration: underline;
   text-underline-offset: 4px;
 }
 
 .user_div {
-  margin: 0rem 0rem 1.5rem 1.5rem;
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-right: 1.5rem;
 }
 
 .userInfos {
   display: flex;
   color: white;
-  margin-bottom: 30px;
+  margin-right: 1rem;
 }
 
 .egg {
@@ -72,16 +80,17 @@
 }
 
 .middle {
-  height: 99%;
-  width: 42%;
+  height: 100vh;
   background-color: #2a3c50;
+  border-top: solid #666a7c 2.5px;
   border-left: solid #666a7c 1.5px;
+  border-bottom: solid #666a7c 2.5px;
   border-right: solid #666a7c 1.5px;
 }
 
 .tweet_div {
   height: 15%;
-  border-bottom: solid #666a7c 1.5px;
+  border-bottom: solid #666a7c 2.5px;
 }
 
 .lastTweets_div {
@@ -90,7 +99,7 @@
 }
 
 .lastTweets_div::-webkit-scrollbar {
-  width: 15px;
+  width: 10px;
 }
 
 .lastTweets_div::-webkit-scrollbar-track {
@@ -107,5 +116,62 @@
 }
 
 .rightSide {
-  width: 34%;
+  height: 30%;
+}
+
+@media (min-width: 875px) {
+  .mainHome {
+    height: 100vh;
+    flex-direction: row;
+  }
+
+  .leftSide {
+    height: 95vh;
+    width: 24%;
+    flex-direction: column;
+  }
+
+  .birdText {
+    margin-left: 10px;
+    display: block;
+  }
+
+  .bird {
+    margin-right: 0px;
+  }
+
+  .linkText {
+    margin-top: 0px;
+  }
+
+  .user_div {
+    width: 0%;
+    display: block;
+    margin: 0rem 0rem 1.5rem 1.5rem;
+  }
+
+  .userInfos {
+    margin-bottom: 30px;
+  }
+
+  .middle {
+    height: 99%;
+    width: 42%;
+  }
+
+  .tweet_div {
+    height: 30%;
+  }
+
+  .lastTweets_div {
+    height: 67.3%;
+  }
+
+  .lastTweets_div::-webkit-scrollbar {
+    width: 15px;
+  }
+
+  .rightSide {
+    width: 34%;
+  }
 }

@@ -9,7 +9,7 @@
   cursor: pointer;
 }
 .title:hover {
-  color: rgb(26, 25, 25, 0.8);
+  color: #4096ff;
   text-decoration: underline;
   text-underline-offset: 4px;
 }

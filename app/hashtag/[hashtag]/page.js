@@ -102,7 +102,7 @@ function Hashtag({ params }) {
               style={{ color: '#ffffff' }}
             />
           </div>
-          <p>fly back to Home</p>
+          <p className={styles.linkText}>fly back to Home</p>
         </Link>
         <div className={styles.user_div}>
           <div className={styles.userInfos}>
