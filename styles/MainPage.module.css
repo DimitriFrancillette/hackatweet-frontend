@@ -1,14 +1,12 @@
 .mainHome {
   display: flex;
-  height: 100vh;
-  background: linear-gradient(to bottom left, #4096ff, #2a3c50 55%);
+  flex-direction: column;
+  background: linear-gradient(to bottom right, #4096ff, #2a3c50 50%);
 }
 
 .leftSide {
-  height: 95vh;
-  width: 24%;
+  height: 10vh;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
 }
 
@@ -21,7 +19,6 @@
   width: 60px;
   transform: rotate(3.142rad);
   transition-duration: 0.75s;
-  cursor: pointer;
 }
 
 .bird:hover {
@@ -32,13 +29,17 @@
 }
 
 .user_div {
-  margin: 0rem 0rem 1.5rem 1.5rem;
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-right: 1.5rem;
 }
 
 .userInfos {
   display: flex;
   color: white;
-  margin-bottom: 30px;
+  margin-right: 1rem;
 }
 
 .egg {
@@ -60,25 +61,26 @@
 }
 
 .middle {
-  height: 99%;
-  width: 42%;
+  height: 100vh;
   background-color: #2a3c50;
+  border-top: solid #666a7c 2.5px;
   border-left: solid #666a7c 1.5px;
+  border-bottom: solid #666a7c 2.5px;
   border-right: solid #666a7c 1.5px;
 }
 
 .tweet_div {
-  height: 30%;
-  border-bottom: solid #666a7c 1.5px;
+  height: 27%;
+  border-bottom: solid #666a7c 2.5px;
 }
 
 .lastTweets_div {
-  height: 67.3%;
+  height: 70%;
   overflow-y: auto;
 }
 
 .lastTweets_div::-webkit-scrollbar {
-  width: 15px;
+  width: 10px;
 }
 
 .lastTweets_div::-webkit-scrollbar-track {
@@ -95,5 +97,68 @@
 }
 
 .rightSide {
-  width: 34%;
+  height: 30%;
+}
+
+@media (min-width: 875px) {
+  .mainHome {
+    flex-direction: row;
+    height: 100vh;
+  }
+
+  .leftSide {
+    height: 95vh;
+    width: 24%;
+    flex-direction: column;
+  }
+
+  .bird_div {
+    margin: 1.5rem 0rem 0rem 1.5rem;
+  }
+
+  .bird {
+    height: 60px;
+    width: 60px;
+    transform: rotate(3.142rad);
+    transition-duration: 0.75s;
+  }
+
+  .bird:hover {
+    height: 70px;
+    width: 70px;
+    transform: rotate(6.142rad);
+    transition-duration: 0.75s;
+  }
+
+  .user_div {
+    width: 0%;
+    display: block;
+    margin: 0rem 0rem 1.5rem 1.5rem;
+  }
+
+  .userInfos {
+    margin-bottom: 30px;
+  }
+
+  .middle {
+    height: 99%;
+    width: 42%;
+  }
+
+  .tweet_div {
+    height: 30%;
+    border-bottom: solid #666a7c 1.5px;
+  }
+
+  .lastTweets_div {
+    height: 67.3%;
+  }
+
+  .lastTweets_div::-webkit-scrollbar {
+    width: 15px;
+  }
+
+  .rightSide {
+    width: 34%;
+  }
 }
