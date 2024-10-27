@@ -13,6 +13,9 @@ function SignUp({ modalOk, modalCancel, modalState }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [signUpError, setSignUpError] = useState(false);
+  const [isFirsnameFocused, setIsFirsnameFocused] = useState(false);
+  const [isUsernameFocused, setIsUsernameFocused] = useState(false);
+  const [isPasswordFocused, setIsPasswordFocused] = useState(false);
 
   const handleSignUp = () => {
     fetch('https://hackhatweet-backend-ten.vercel.app/users/signup', {
@@ -82,21 +85,33 @@ function SignUp({ modalOk, modalCancel, modalState }) {
             value={firstname}
             className={styles.modaleInput}
             placeholder='Firstname'
-            style={{ backgroundColor: '#2A3C50' }}
+            onFocus={() => setIsFirsnameFocused(true)}
+            onBlur={() => setIsFirsnameFocused(false)}
+            style={{
+              backgroundColor: isFirsnameFocused ? '#595d63' : '#2A3C50',
+            }}
           />
           <Input
             onChange={(e) => setUsername(e.target.value)}
             value={username}
             className={styles.modaleInput}
             placeholder='Username'
-            style={{ backgroundColor: '#2A3C50' }}
+            onFocus={() => setIsUsernameFocused(true)}
+            onBlur={() => setIsUsernameFocused(false)}
+            style={{
+              backgroundColor: isUsernameFocused ? '#595d63' : '#2A3C50',
+            }}
           />
           <Input
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             className={styles.modaleInput}
             placeholder='Password'
-            style={{ backgroundColor: '#2A3C50' }}
+            onFocus={() => setIsPasswordFocused(true)}
+            onBlur={() => setIsPasswordFocused(false)}
+            style={{
+              backgroundColor: isPasswordFocused ? '#595d63' : '#2A3C50',
+            }}
           />
         </Space>
         {signUpError && (

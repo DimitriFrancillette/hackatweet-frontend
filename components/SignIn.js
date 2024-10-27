@@ -11,6 +11,8 @@ function SignIn({ modalOk, modalCancel, modalState }) {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [isUsernameFocused, setIsUsernameFocused] = useState(false);
+  const [isPasswordFocused, setIsPasswordFocused] = useState(false);
   const [signInError, setSignInError] = useState(false);
 
   const handleSignIn = () => {
@@ -73,14 +75,22 @@ function SignIn({ modalOk, modalCancel, modalState }) {
             value={username}
             className={styles.modaleInput}
             placeholder='Username'
-            style={{ backgroundColor: '#2A3C50' }}
+            onFocus={() => setIsUsernameFocused(true)}
+            onBlur={() => setIsUsernameFocused(false)}
+            style={{
+              backgroundColor: isUsernameFocused ? '#595d63' : '#2A3C50',
+            }}
           />
           <Input
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             className={styles.modaleInput}
             placeholder='Password'
-            style={{ backgroundColor: '#2A3C50' }}
+            onFocus={() => setIsPasswordFocused(true)}
+            onBlur={() => setIsPasswordFocused(false)}
+            style={{
+              backgroundColor: isPasswordFocused ? '#595d63' : '#2A3C50',
+            }}
           />
         </Space>
         {signInError && (
