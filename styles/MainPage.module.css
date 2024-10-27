@@ -110,17 +110,13 @@
   }
 
   .bird {
-    height: 60px;
-    width: 60px;
-    transform: rotate(3.142rad);
-    transition-duration: 0.75s;
+    height: 90px;
+    width: 90px;
   }
 
   .bird:hover {
-    height: 60px;
-    width: 60px;
-    transform: rotate(6.142rad);
-    transition-duration: 0.75s;
+    height: 90px;
+    width: 90px;
   }
 
   .user_div {

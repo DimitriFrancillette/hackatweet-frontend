@@ -1,10 +1,10 @@
 .main {
   color: white;
-  padding-left: 20px;
+  padding: 0px 20px 10px 20px;
 }
 
 .title_div {
-  font-size: 25px;
+  font-size: 22px;
 }
 
 .input_div {
@@ -25,4 +25,10 @@
 
 .searchHashtag::placeholder {
   color: white;
+}
+
+@media (min-width: 875px) {
+  .title_div {
+    font-size: 25px;
+  }
 }

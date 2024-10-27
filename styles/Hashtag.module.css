@@ -6,8 +6,8 @@
 
 .leftSide {
   display: flex;
-  height: 10vh;
   justify-content: space-between;
+  padding-bottom: 1rem;
 }
 
 .bird_div {
@@ -16,22 +16,17 @@
 }
 
 .bird {
-  height: 60px;
-  width: 60px;
+  height: 40px;
+  width: 40px;
   transform: rotate(3.142rad);
   transition-duration: 0.75s;
-  margin-right: 10px;
 }
 
 .bird:hover {
-  height: 60px;
-  width: 60px;
+  height: 40px;
+  width: 40px;
   transform: rotate(6.142rad);
   transition-duration: 0.75s;
-}
-
-.linkText {
-  margin-top: 40px;
 }
 
 .birdText {
@@ -39,16 +34,24 @@
   font-weight: bold;
   text-decoration: none;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  font-size: x-small;
 }
+
 .birdText:hover {
   color: #4096ff;
   text-decoration: underline;
   text-underline-offset: 4px;
 }
 
+.linkText {
+  /* margin-top: 40px; */
+  margin-left: 10px;
+}
+
 .user_div {
-  width: 50%;
+  /* width: 50%; */
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -62,8 +65,8 @@
 }
 
 .egg {
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   background-color: #4096ff;
   border-radius: 50%;
   padding: 5px;
@@ -80,7 +83,7 @@
 }
 
 .middle {
-  height: 100vh;
+  /* height: 100vh; */
   background-color: #2a3c50;
   border-top: solid #666a7c 2.5px;
   border-left: solid #666a7c 1.5px;
@@ -89,12 +92,12 @@
 }
 
 .tweet_div {
-  height: 15%;
+  height: 27%;
   border-bottom: solid #666a7c 2.5px;
 }
 
 .lastTweets_div {
-  height: 81.9%;
+  height: 80vh;
   overflow-y: auto;
 }
 
@@ -116,17 +119,17 @@
 }
 
 .rightSide {
-  height: 30%;
+  /* height: 30%; */
 }
 
 @media (min-width: 875px) {
   .mainHome {
-    height: 100vh;
     flex-direction: row;
+    height: 100vh;
   }
 
   .leftSide {
-    height: 95vh;
+    /* height: 95vh; */
     width: 24%;
     flex-direction: column;
   }
@@ -134,15 +137,26 @@
   .birdText {
     margin-left: 10px;
     display: block;
+    font-size: large;
   }
 
   .bird {
     margin-right: 0px;
   }
 
-  .linkText {
-    margin-top: 0px;
+  .bird {
+    height: 90px;
+    width: 90px;
   }
+
+  .bird:hover {
+    height: 90px;
+    width: 90px;
+  }
+
+  /* .linkText {
+    margin-top: 0px;
+  } */
 
   .user_div {
     width: 0%;
@@ -160,7 +174,7 @@
   }
 
   .tweet_div {
-    height: 30%;
+    /* height: 30%; */
   }
 
   .lastTweets_div {
