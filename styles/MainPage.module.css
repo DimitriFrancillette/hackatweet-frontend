@@ -5,9 +5,9 @@
 }
 
 .leftSide {
-  height: 10vh;
   display: flex;
   justify-content: space-between;
+  padding-bottom: 1rem;
 }
 
 .bird_div {
@@ -15,21 +15,20 @@
 }
 
 .bird {
-  height: 60px;
-  width: 60px;
+  height: 40px;
+  width: 40px;
   transform: rotate(3.142rad);
   transition-duration: 0.75s;
 }
 
 .bird:hover {
-  height: 70px;
-  width: 70px;
+  height: 40px;
+  width: 40px;
   transform: rotate(6.142rad);
   transition-duration: 0.75s;
 }
 
 .user_div {
-  width: 50%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -43,8 +42,8 @@
 }
 
 .egg {
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   background-color: #4096ff;
   border-radius: 50%;
   padding: 5px;
@@ -61,7 +60,6 @@
 }
 
 .middle {
-  height: 100vh;
   background-color: #2a3c50;
   border-top: solid #666a7c 2.5px;
   border-left: solid #666a7c 1.5px;
@@ -75,7 +73,7 @@
 }
 
 .lastTweets_div {
-  height: 70%;
+  height: 80vh;
   overflow-y: auto;
 }
 
@@ -96,10 +94,6 @@
   background-color: #4096ff;
 }
 
-.rightSide {
-  height: 30%;
-}
-
 @media (min-width: 875px) {
   .mainHome {
     flex-direction: row;
@@ -107,7 +101,6 @@
   }
 
   .leftSide {
-    height: 95vh;
     width: 24%;
     flex-direction: column;
   }
@@ -124,8 +117,8 @@
   }
 
   .bird:hover {
-    height: 70px;
-    width: 70px;
+    height: 60px;
+    width: 60px;
     transform: rotate(6.142rad);
     transition-duration: 0.75s;
   }
@@ -141,17 +134,15 @@
   }
 
   .middle {
-    height: 99%;
     width: 42%;
   }
 
   .tweet_div {
-    height: 30%;
     border-bottom: solid #666a7c 1.5px;
   }
 
   .lastTweets_div {
-    height: 67.3%;
+    height: 70vh;
   }
 
   .lastTweets_div::-webkit-scrollbar {

@@ -2,6 +2,9 @@
   color: white;
   padding-left: 20px;
   padding-right: 20px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .title_div {
@@ -35,7 +38,7 @@
 }
 
 .button_div {
-  margin-top: 15px; /** CHANGED*/
+  margin-top: 15px;
   margin-right: 100px;
   display: flex;
   justify-content: flex-end;
