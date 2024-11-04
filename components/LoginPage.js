@@ -3,23 +3,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { Button } from 'antd';
 import { useState } from 'react';
-import SignUp from './SignUp';
-import SignIn from './SignIn';
+import AuthModal from './AuthModal';
 
 function LoginPage() {
-  const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
-  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [authType, setAuthType] = useState('signup');
 
   const showModal = (param) => {
-    param === 'up' ? setIsSignUpModalOpen(true) : setIsSignInModalOpen(true);
-  };
-
-  const modalOk = (param) => {
-    param === 'up' ? setIsSignUpModalOpen(false) : setIsSignInModalOpen(false);
-  };
-
-  const modalCancel = (param) => {
-    param === 'up' ? setIsSignUpModalOpen(false) : setIsSignInModalOpen(false);
+    setAuthType(param);
+    setIsModalOpen(!isModalOpen);
   };
 
   return (
@@ -46,7 +38,7 @@ function LoginPage() {
         <div className={styles.buttons_div}>
           <Button
             type='primary'
-            onClick={() => showModal('up')}
+            onClick={() => showModal('signup')}
             className={styles.signUpbutton}
           >
             Sign up
@@ -54,29 +46,21 @@ function LoginPage() {
           <span className={styles.signText}>Already have an account ?</span>
           <Button
             type='primary'
-            onClick={() => showModal()}
+            onClick={() => showModal('signin')}
             className={styles.signInbutton}
           >
             Sign in
           </Button>
         </div>
-
         <p>
           Sign up to be able to{' '}
           <span className={styles.emphasis}>see the latest tweets</span> and{' '}
           <span className={styles.emphasis}>add your own</span>.
         </p>
-
-        {/* utilisation des props et du inverse data flow pour faire transiter les informations necessaires à l'ouverture et fermeture des modals */}
-        <SignUp
-          modalState={isSignUpModalOpen}
-          modalCancel={modalCancel}
-          modalOk={modalOk}
-        />
-        <SignIn
-          modalState={isSignInModalOpen}
-          modalCancel={modalCancel}
-          modalOk={modalOk}
+        <AuthModal
+          modalState={isModalOpen}
+          showModal={showModal}
+          authType={authType}
         />
       </div>
     </div>

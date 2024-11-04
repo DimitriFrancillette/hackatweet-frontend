@@ -1,4 +1,4 @@
-import styles from '../styles/SignIn.module.css';
+import styles from '../styles/AuthModal.module.css';
 import { Modal, Button, Input, Space } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
@@ -6,20 +6,36 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../redux/reducers/user';
 
-function SignIn({ modalOk, modalCancel, modalState }) {
+function AuthModal({ authType, modalState, showModal }) {
   const dispatch = useDispatch();
-
+  const [firstname, setFirstname] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [signUpError, setSignUpError] = useState(false);
+  const [isFirsnameFocused, setIsFirsnameFocused] = useState(false);
   const [isUsernameFocused, setIsUsernameFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
-  const [signInError, setSignInError] = useState(false);
 
-  const handleSignIn = () => {
-    fetch('https://hackhatweet-backend-ten.vercel.app/users/signin', {
+  let objToPost = {};
+
+  if (authType === 'signup') {
+    objToPost = {
+      firstname: firstname,
+      username: username,
+      password: password,
+    };
+  } else {
+    objToPost = {
+      username: username,
+      password: password,
+    };
+  }
+
+  const handleSignUp = () => {
+    fetch(`https://hackhatweet-backend-ten.vercel.app/users/${authType}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username: username, password: password }),
+      body: JSON.stringify(objToPost),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -32,44 +48,64 @@ function SignIn({ modalOk, modalCancel, modalState }) {
               userId: data.userId,
             })
           );
+          setFirstname('');
           setUsername('');
           setPassword('');
-          modalOk();
+          showModal(authType);
         }
+
+        setSignUpError(true);
+        setFirstname('');
         setUsername('');
         setPassword('');
-        setSignInError(true);
       });
   };
 
   const handleCancel = () => {
-    const closeModal = () => modalCancel();
-    closeModal();
-    setSignInError(false);
+    showModal(authType);
+    setSignUpError(false);
   };
 
   return (
     <div className={styles.main}>
       <Modal
+        className={styles.modale}
         open={modalState}
         onCancel={() => handleCancel()}
         centered
-        style={{ height: 350 }}
+        style={{ height: 400 }}
         width={600}
         footer={[
           <Button
             className={styles.modaleButton}
             key='submit'
             type='primary'
-            onClick={() => handleSignIn()}
+            onClick={() => handleSignUp()}
           >
-            Sign in
+            {authType === 'signup' ? 'Sign up' : 'Sign in'}
           </Button>,
         ]}
       >
         <FontAwesomeIcon icon={faTwitter} className={styles.modaleBird} />
-        <p className={styles.modaleInText}>Connect to Hackatweet</p>
+        <p className={styles.modaleText}>
+          {authType === 'signup'
+            ? 'Create your Hackatweet account'
+            : 'Connect to Hackatweet'}
+        </p>
         <Space direction='vertical' size={20}>
+          {authType === 'signup' && (
+            <Input
+              onChange={(e) => setFirstname(e.target.value)}
+              value={firstname}
+              className={styles.modaleInput}
+              placeholder='Firstname'
+              onFocus={() => setIsFirsnameFocused(true)}
+              onBlur={() => setIsFirsnameFocused(false)}
+              style={{
+                backgroundColor: isFirsnameFocused ? '#595d63' : '#2A3C50',
+              }}
+            />
+          )}
           <Input
             onChange={(e) => setUsername(e.target.value)}
             value={username}
@@ -93,12 +129,16 @@ function SignIn({ modalOk, modalCancel, modalState }) {
             }}
           />
         </Space>
-        {signInError && (
-          <p className={styles.modaleError}>Wrong login or wrong password</p>
+        {signUpError && (
+          <p className={styles.modaleError}>
+            {authType === 'signup'
+              ? 'User already exists or a field is incorrect'
+              : 'Wrong login or wrong password'}
+          </p>
         )}
       </Modal>
     </div>
   );
 }
 
-export default SignIn;
+export default AuthModal;
