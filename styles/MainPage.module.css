@@ -68,12 +68,16 @@
 }
 
 .tweet_div {
-  height: 27%;
+  height: 32%;
   border-bottom: solid #666a7c 2.5px;
+  color: white;
+  padding: 0px 20px 10px 20px;
 }
 
+/* TODO CHECKER HEIGH */
 .lastTweets_div {
-  height: 80vh;
+  height: 68%;
+  /* height: 80vh; */
   overflow-y: auto;
 }
 
@@ -138,7 +142,8 @@
   }
 
   .lastTweets_div {
-    height: 70vh;
+    height: 68%;
+    /* height: 70vh; */
   }
 
   .lastTweets_div::-webkit-scrollbar {

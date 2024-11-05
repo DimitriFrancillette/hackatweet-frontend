@@ -57,7 +57,7 @@ function TweetPosting({ tweetListChange }) {
   }, [newTweet]);
 
   return (
-    <div className={styles.main}>
+    <>
       <div className={styles.title_div}>
         <h3>Home</h3>
       </div>
@@ -81,7 +81,7 @@ function TweetPosting({ tweetListChange }) {
           Tweet
         </Button>
       </div>
-    </div>
+    </>
   );
 }
 
