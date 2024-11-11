@@ -46,40 +46,7 @@
 }
 
 .linkText {
-  /* margin-top: 40px; */
   margin-left: 10px;
-}
-
-.user_div {
-  /* width: 50%; */
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-right: 1.5rem;
-}
-
-.userInfos {
-  display: flex;
-  color: white;
-  margin-right: 1rem;
-}
-
-.egg {
-  height: 30px;
-  width: 30px;
-  background-color: #4096ff;
-  border-radius: 50%;
-  padding: 5px;
-  margin-right: 15px;
-}
-
-.userFirstname {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.userUsername {
-  color: #666a7c;
 }
 
 .middle {
@@ -117,10 +84,6 @@
   background-color: #4096ff;
 }
 
-.rightSide {
-  /* height: 30%; */
-}
-
 @media (min-width: 875px) {
   .mainHome {
     flex-direction: row;
@@ -128,7 +91,6 @@
   }
 
   .leftSide {
-    /* height: 95vh; */
     width: 24%;
     flex-direction: column;
   }
@@ -153,27 +115,9 @@
     width: 90px;
   }
 
-  /* .linkText {
-    margin-top: 0px;
-  } */
-
-  .user_div {
-    width: 0%;
-    display: block;
-    margin: 0rem 0rem 1.5rem 1.5rem;
-  }
-
-  .userInfos {
-    margin-bottom: 30px;
-  }
-
   .middle {
     height: 99%;
     width: 42%;
-  }
-
-  .tweet_div {
-    /* height: 30%; */
   }
 
   .lastTweets_div {

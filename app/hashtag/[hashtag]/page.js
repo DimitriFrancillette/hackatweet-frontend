@@ -2,26 +2,21 @@
 import styles from '../../../styles/Hashtag.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
-import { faEgg } from '@fortawesome/free-solid-svg-icons';
-import { Button } from 'antd';
 import LoginPage from '../../../components/LoginPage';
 import Trends from '../../../components/Trends';
 import HashtagSearch from '../../../components/HashtagSearch';
 import OneTweet from '../../../components/OneTweet';
-import { useSelector, useDispatch } from 'react-redux';
-import { logout } from '../../../redux/reducers/user';
+import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import Spinner from '@/components/Spinner';
 import ErrorMessage from '@/components/ErrorMessage';
+import UserInformation from '@/components/UserInformation';
 
 function Hashtag({ params }) {
-  const dispatch = useDispatch();
   const [hashtagsData, setHashtagsData] = useState([]);
   const [tweetsData, setTweetsData] = useState([]);
   const [tweetsReload, setTweetsReload] = useState(false);
-  const router = useRouter();
   const hashtagName = params.hashtag;
   const user = useSelector((state) => state.user.value);
   const [reload, setReload] = useState(false);
@@ -99,11 +94,6 @@ function Hashtag({ params }) {
     setTweetsData(tweetsArray);
   };
 
-  const handleLogout = () => {
-    dispatch(logout());
-    router.push(`/`);
-  };
-
   let firstPage = <LoginPage />;
 
   const hashtagPage = (
@@ -119,20 +109,7 @@ function Hashtag({ params }) {
           </div>
           <p className={styles.linkText}>fly back to Home</p>
         </Link>
-        <div className={styles.user_div}>
-          <div className={styles.userInfos}>
-            <div className={styles.userLogo}>
-              <FontAwesomeIcon icon={faEgg} className={styles.egg} />
-            </div>
-            <div className={styles.userDetails}>
-              <div className={styles.userFirstname}>{user.firstname}</div>
-              <div className={styles.userUsername}>@{user.username}</div>
-            </div>
-          </div>
-          <Button type='primary' ghost onClick={() => handleLogout()}>
-            Logout
-          </Button>
-        </div>
+        <UserInformation />
       </div>
       <div className={styles.middle}>
         <div className={styles.tweet_div}>
