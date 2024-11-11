@@ -11,16 +11,21 @@ import OneTweet from './OneTweet';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../redux/reducers/user';
 import { useEffect, useState } from 'react';
+import Spinner from './Spinner';
 
 function MainPage() {
   const dispatch = useDispatch();
   const [tweetsData, setTweetsData] = useState([]);
   const [tweetsReload, setTweetsReload] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const user = useSelector((state) => state.user.value);
 
   useEffect(() => {
+    setIsLoading(true);
     fetch('https://hackhatweet-backend-ten.vercel.app/tweets/')
       .then((response) => response.json())
       .then((data) => {
+        setIsLoading(false);
         setTweetsData(data);
       });
   }, [tweetsReload]);
@@ -28,8 +33,6 @@ function MainPage() {
   const tweetListChange = () => {
     setTweetsReload(!tweetsReload);
   };
-
-  const user = useSelector((state) => state.user.value);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -82,7 +85,10 @@ function MainPage() {
         <div className={styles.tweet_div}>
           <TweetPosting tweetListChange={tweetListChange} />
         </div>
-        <div className={styles.lastTweets_div}>{tweetList}</div>
+        <div className={styles.lastTweets_div}>
+          {isLoading && <Spinner />}
+          {tweetList}
+        </div>
       </div>
       <div className={styles.rightSide}>
         <Trends reload={tweetsReload} />

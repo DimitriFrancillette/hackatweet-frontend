@@ -29,9 +29,9 @@ function OneTweet({
   const likesNumber = likesArray.length;
 
   const handleLikes = () => {
-    const idsearch = likesArray.includes(user.userId);
+    const isIdInLikesArray = likesArray.includes(user.userId);
 
-    if (!idsearch) {
+    if (!isIdInLikesArray) {
       fetch(
         `https://hackhatweet-backend-ten.vercel.app/tweets/like/${tweetId}`,
         {

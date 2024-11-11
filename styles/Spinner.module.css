@@ -1,0 +1,30 @@
+@keyframes spinner {
+  0% {
+    transform: translateX(-50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+
+.spinner {
+  position: absolute;
+  left: 45%;
+  top: 46%;
+  transform: translateX(-50%) translateZ(0);
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  border-top: 7px solid #e2e7e9;
+  border-right: 7px solid #e2e7e9;
+  border-bottom: 7px solid #e2e7e9;
+  border-left: 7px solid #4096ff;
+  animation: spinner 1s infinite linear;
+}
+
+@media (min-width: 875px) {
+  .spinner {
+    top: 55%;
+  }
+}

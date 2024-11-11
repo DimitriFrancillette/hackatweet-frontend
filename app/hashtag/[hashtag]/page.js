@@ -13,6 +13,7 @@ import { logout } from '../../../redux/reducers/user';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import Spinner from '@/components/Spinner';
 
 function Hashtag({ params }) {
   const dispatch = useDispatch();
@@ -23,17 +24,20 @@ function Hashtag({ params }) {
   const hashtagName = params.hashtag;
   const user = useSelector((state) => state.user.value);
   const [reload, setReload] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setReload((prevReload) => !prevReload);
   }, [hashtagName]);
 
   useEffect(() => {
+    setIsLoading(true);
     fetch('https://hackhatweet-backend-ten.vercel.app/hashtags/')
       .then((response) => response.json())
       .then((data) => {
         setHashtagsData(data);
         setTweetsReload((prevTweetsReload) => !prevTweetsReload);
+        setIsLoading(false);
       });
   }, [reload]);
 
@@ -127,7 +131,10 @@ function Hashtag({ params }) {
             hashtagName={hashtagName}
           />
         </div>
-        <div className={styles.lastTweets_div}>{tweetList}</div>
+        <div className={styles.lastTweets_div}>
+          {isLoading && <Spinner />}
+          {tweetList}
+        </div>
       </div>
       <div className={styles.rightSide}>
         <Trends reload={tweetsReload} />
