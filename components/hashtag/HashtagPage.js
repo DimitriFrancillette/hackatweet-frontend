@@ -1,9 +1,9 @@
-import styles from '../styles/HashtagPage.module.css';
+import styles from '../../styles/HashtagPage.module.css';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Trends from '@/components/Trends';
-import HashtagSearch from '@/components/HashtagSearch';
-import OneTweet from '@/components/OneTweet';
+import HashtagSearch from '@/components/hashtag/HashtagSearch';
+import OneTweet from '@/components/tweet/OneTweet';
 import Spinner from '@/components/Spinner';
 import ErrorMessage from '@/components/ErrorMessage';
 import UserInformation from '@/components/UserInformation';

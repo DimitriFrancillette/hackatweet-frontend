@@ -1,4 +1,4 @@
-import styles from '../styles/OneTweet.module.css';
+import styles from '../../styles/OneTweet.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEgg, faHeart, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';

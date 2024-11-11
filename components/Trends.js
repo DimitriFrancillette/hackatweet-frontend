@@ -1,7 +1,7 @@
 import styles from '../styles/Trends.module.css';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import HashtagCard from './HashtagCard';
+import HashtagCard from './hashtag/HashtagCard';
 
 function Trends({ reload }) {
   const [hashData, setHashData] = useState([]);

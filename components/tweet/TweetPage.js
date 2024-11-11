@@ -1,14 +1,14 @@
-import styles from '../styles/MainPage.module.css';
+import styles from '../../styles/TweetPage.module.css';
 import { useEffect, useState } from 'react';
-import Trends from './Trends';
-import TweetPosting from './TweetPosting';
 import OneTweet from './OneTweet';
-import Spinner from './Spinner';
-import ErrorMessage from './ErrorMessage';
-import UserInformation from './UserInformation';
-import Bird from './Bird';
+import Bird from '../Bird';
+import UserInformation from '../UserInformation';
+import TweetPosting from './TweetPosting';
+import Spinner from '../Spinner';
+import ErrorMessage from '../ErrorMessage';
+import Trends from '../Trends';
 
-export default function MainPage() {
+export default function TweetPage() {
   const [tweetsData, setTweetsData] = useState([]);
   const [tweetsReload, setTweetsReload] = useState(false);
   const [isLoading, setIsLoading] = useState(false);

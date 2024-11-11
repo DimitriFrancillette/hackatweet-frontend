@@ -1,4 +1,4 @@
-import styles from '../styles/HashtagSearch.module.css';
+import styles from '../../styles/HashtagSearch.module.css';
 import { Input } from 'antd';
 import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
