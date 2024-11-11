@@ -1,13 +1,12 @@
 import styles from '../styles/MainPage.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { useEffect, useState } from 'react';
 import Trends from './Trends';
 import TweetPosting from './TweetPosting';
 import OneTweet from './OneTweet';
-import { useEffect, useState } from 'react';
 import Spinner from './Spinner';
 import ErrorMessage from './ErrorMessage';
 import UserInformation from './UserInformation';
+import Bird from './Bird';
 
 export default function MainPage() {
   const [tweetsData, setTweetsData] = useState([]);
@@ -57,13 +56,7 @@ export default function MainPage() {
   return (
     <div className={styles.mainHome}>
       <div className={styles.leftSide}>
-        <div className={styles.bird_div}>
-          <FontAwesomeIcon
-            icon={faTwitter}
-            className={styles.bird}
-            style={{ color: '#ffffff' }}
-          />
-        </div>
+        <Bird />
         <UserInformation />
       </div>
       <div className={styles.middle}>

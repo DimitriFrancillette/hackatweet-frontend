@@ -10,24 +10,6 @@
   padding-bottom: 1rem;
 }
 
-.bird_div {
-  margin: 1.5rem 0rem 0rem 1.5rem;
-}
-
-.bird {
-  height: 40px;
-  width: 40px;
-  transform: rotate(3.142rad);
-  transition-duration: 0.75s;
-}
-
-.bird:hover {
-  height: 40px;
-  width: 40px;
-  transform: rotate(6.142rad);
-  transition-duration: 0.75s;
-}
-
 .middle {
   background-color: #2a3c50;
   border-top: solid #666a7c 2.5px;
@@ -74,20 +56,6 @@
   .leftSide {
     width: 24%;
     flex-direction: column;
-  }
-
-  .bird_div {
-    margin: 1.5rem 0rem 0rem 1.5rem;
-  }
-
-  .bird {
-    height: 90px;
-    width: 90px;
-  }
-
-  .bird:hover {
-    height: 90px;
-    width: 90px;
   }
 
   .middle {

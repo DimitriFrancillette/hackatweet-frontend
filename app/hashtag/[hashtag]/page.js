@@ -1,17 +1,16 @@
 'use client';
 import styles from '../../../styles/Hashtag.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import LoginPage from '../../../components/LoginPage';
 import Trends from '../../../components/Trends';
 import HashtagSearch from '../../../components/HashtagSearch';
 import OneTweet from '../../../components/OneTweet';
-import { useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
 import Spinner from '@/components/Spinner';
 import ErrorMessage from '@/components/ErrorMessage';
 import UserInformation from '@/components/UserInformation';
+import Bird from '@/components/Bird';
 
 function Hashtag({ params }) {
   const [hashtagsData, setHashtagsData] = useState([]);
@@ -100,13 +99,7 @@ function Hashtag({ params }) {
     <div className={styles.mainHome}>
       <div className={styles.leftSide}>
         <Link href='/' className={styles.birdText}>
-          <div className={styles.bird_div}>
-            <FontAwesomeIcon
-              icon={faTwitter}
-              className={styles.bird}
-              style={{ color: '#ffffff' }}
-            />
-          </div>
+          <Bird />
           <p className={styles.linkText}>fly back to Home</p>
         </Link>
         <UserInformation />
