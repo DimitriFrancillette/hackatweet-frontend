@@ -1,10 +1,8 @@
-'use client';
 import styles from '../styles/MainPage.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faEgg } from '@fortawesome/free-solid-svg-icons';
 import { Button } from 'antd';
-import LoginPage from './LoginPage';
 import Trends from './Trends';
 import TweetPosting from './TweetPosting';
 import OneTweet from './OneTweet';
@@ -13,7 +11,7 @@ import { logout } from '../redux/reducers/user';
 import { useEffect, useState } from 'react';
 import Spinner from './Spinner';
 
-function MainPage() {
+export default function MainPage() {
   const dispatch = useDispatch();
   const [tweetsData, setTweetsData] = useState([]);
   const [tweetsReload, setTweetsReload] = useState(false);
@@ -54,9 +52,7 @@ function MainPage() {
     );
   });
 
-  let firstPage = <LoginPage />;
-
-  const homePage = (
+  return (
     <div className={styles.mainHome}>
       <div className={styles.leftSide}>
         <div className={styles.bird_div}>
@@ -95,12 +91,4 @@ function MainPage() {
       </div>
     </div>
   );
-
-  if (user.token !== null) {
-    firstPage = homePage;
-  }
-
-  return <>{firstPage}</>;
 }
-
-export default MainPage;
