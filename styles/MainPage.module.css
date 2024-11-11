@@ -74,10 +74,8 @@
   padding: 0px 20px 10px 20px;
 }
 
-/* TODO CHECKER HEIGH */
 .lastTweets_div {
-  height: 68%;
-  /* height: 80vh; */
+  height: 100vh;
   overflow-y: auto;
 }
 
@@ -142,8 +140,7 @@
   }
 
   .lastTweets_div {
-    height: 68%;
-    /* height: 70vh; */
+    height: 63vh;
   }
 
   .lastTweets_div::-webkit-scrollbar {

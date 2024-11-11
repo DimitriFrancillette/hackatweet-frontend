@@ -10,21 +10,32 @@ import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../redux/reducers/user';
 import { useEffect, useState } from 'react';
 import Spinner from './Spinner';
+import ErrorMessage from './ErrorMessage';
 
 export default function MainPage() {
   const dispatch = useDispatch();
   const [tweetsData, setTweetsData] = useState([]);
   const [tweetsReload, setTweetsReload] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const user = useSelector((state) => state.user.value);
 
   useEffect(() => {
     setIsLoading(true);
     fetch('https://hackhatweet-backend-ten.vercel.app/tweets/')
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error();
+        }
+        return response.json();
+      })
       .then((data) => {
         setIsLoading(false);
         setTweetsData(data);
+      })
+      .catch(() => {
+        setErrorMessage('Something went wrong.');
+        setIsLoading(false);
       });
   }, [tweetsReload]);
 
@@ -83,6 +94,7 @@ export default function MainPage() {
         </div>
         <div className={styles.lastTweets_div}>
           {isLoading && <Spinner />}
+          {errorMessage && <ErrorMessage message={errorMessage} />}
           {tweetList}
         </div>
       </div>

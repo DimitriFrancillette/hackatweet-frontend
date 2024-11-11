@@ -1,0 +1,19 @@
+.errorMessage {
+  color: rgb(179, 54, 54);
+  font-weight: bolder;
+  position: absolute;
+  left: 26%;
+  top: 56%;
+}
+
+@media (min-width: 875px) {
+  .errorMessage {
+    left: 36%;
+  }
+}
+
+@media (min-width: 1000px) {
+  .errorMessage {
+    left: 39.5%;
+  }
+}

@@ -14,6 +14,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Spinner from '@/components/Spinner';
+import ErrorMessage from '@/components/ErrorMessage';
 
 function Hashtag({ params }) {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ function Hashtag({ params }) {
   const user = useSelector((state) => state.user.value);
   const [reload, setReload] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     setReload((prevReload) => !prevReload);
@@ -33,10 +35,19 @@ function Hashtag({ params }) {
   useEffect(() => {
     setIsLoading(true);
     fetch('https://hackhatweet-backend-ten.vercel.app/hashtags/')
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error();
+        }
+        return response.json();
+      })
       .then((data) => {
         setHashtagsData(data);
         setTweetsReload((prevTweetsReload) => !prevTweetsReload);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setErrorMessage('Something went wrong.');
         setIsLoading(false);
       });
   }, [reload]);
@@ -133,6 +144,7 @@ function Hashtag({ params }) {
         </div>
         <div className={styles.lastTweets_div}>
           {isLoading && <Spinner />}
+          {errorMessage && <ErrorMessage message={errorMessage} />}
           {tweetList}
         </div>
       </div>
