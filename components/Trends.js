@@ -1,6 +1,7 @@
 import styles from '../styles/Trends.module.css';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import HashtagCard from './HashtagCard';
 
 function Trends({ reload }) {
   const [hashData, setHashData] = useState([]);
@@ -13,18 +14,18 @@ function Trends({ reload }) {
       });
   }, [reload]);
 
-  const hashList = hashData.map((data, i) => {
+  const hashList = hashData.map((data) => {
     const linkParam = data.name.split('#')[1];
 
-    const hashLink = `/hashtag/${linkParam}`;
+    const hashtagLink = `/hashtag/${linkParam}`;
 
     return (
-      <div key={i} className={styles.hashCard}>
-        <Link href={hashLink}>
-          <span className={styles.hashTag}>{data.name}</span>
-        </Link>
-        <span className={styles.hashCount}>{data.tweet.length} tweets</span>
-      </div>
+      <HashtagCard
+        key={data._id}
+        hashtagLink={hashtagLink}
+        hashtagName={data.name}
+        tweetCount={data.tweet.length}
+      />
     );
   });
 
