@@ -5,12 +5,21 @@ import HashtagCard from './hashtag/HashtagCard';
 
 function Trends({ reload }) {
   const [hashData, setHashData] = useState([]);
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     fetch('https://hackhatweet-backend-ten.vercel.app/hashtags/')
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error();
+        }
+        return response.json();
+      })
       .then((data) => {
         setHashData(data);
+      })
+      .catch(() => {
+        setErrorMessage('Something went wrong.');
       });
   }, [reload]);
 
@@ -34,6 +43,7 @@ function Trends({ reload }) {
       <Link className={styles.title} href='/hashtag/0'>
         <h3>Trends</h3>
       </Link>
+      <p className={styles.error}>{errorMessage}</p>
       <div className={styles.trendsBox}>{hashList}</div>
     </div>
   );

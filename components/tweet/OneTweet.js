@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 const moment = require('moment');
 
-function OneTweet({
+export default function OneTweet({
   firstname,
   username,
   likes,
@@ -18,15 +18,16 @@ function OneTweet({
   const [showTrash, setShowTrash] = useState(false);
   const user = useSelector((state) => state.user.value);
 
-  let heartStyle = { color: '#ffffff', cursor: 'pointer' };
-  if (likes.length > 0) {
-    heartStyle = { color: 'red', cursor: 'pointer' };
-  }
-
-  const fromNow = moment(postedDate).fromNow(true);
+  const timeFromNow = moment(postedDate).fromNow(true);
 
   const likesArray = likes;
   const likesNumber = likesArray.length;
+
+  useEffect(() => {
+    if (userId === user.userId) {
+      setShowTrash(true);
+    }
+  }, []);
 
   const handleLikes = () => {
     const isIdInLikesArray = likesArray.includes(user.userId);
@@ -61,12 +62,6 @@ function OneTweet({
       });
   };
 
-  useEffect(() => {
-    if (userId === user.userId) {
-      setShowTrash(true);
-    }
-  }, []);
-
   const deleteTweet = () => {
     const hashtagRegex = /#(\w+)/g;
     const words = description.split(' ');
@@ -93,36 +88,9 @@ function OneTweet({
       });
   };
 
-  //fonction qui récupère la phrase pour trouver les mots hashtag et les styliser avant de l'afficher
-  function Sentence() {
-    const hashtagRegex = /#(\w+)/g;
-    //on sépare les mots dans un tableau
-    const words = description.split(' ');
-
-    return (
-      <span>
-        {words.map((word, index) => {
-          //On passe dans le tableau et on vérifie si c'est un hashtag
-          const isHashtag = word.match(hashtagRegex);
-
-          if (isHashtag) {
-            //Si c'est le cas on l'affiche avec un style
-            return (
-              <span
-                key={index}
-                style={{ color: '#4096FF', fontWeight: 'bold' }}
-              >
-                {' '}
-                {word}{' '}
-              </span>
-            );
-          } else {
-            //Sinon on le renvoi normalement
-            return `${word} `;
-          }
-        })}
-      </span>
-    );
+  let heartStyle = { color: '#ffffff', cursor: 'pointer' };
+  if (likes.length > 0) {
+    heartStyle = { color: 'red', cursor: 'pointer' };
   }
 
   return (
@@ -136,10 +104,10 @@ function OneTweet({
           />
           <div className={styles.userFirstname}>{firstname}</div>
           <div className={styles.userUsername}>@{username}</div>
-          <div className={styles.tweetTime}>. {fromNow}</div>
+          <div className={styles.tweetTime}>. {timeFromNow} ago</div>
         </div>
         <div className={styles.tweetText}>
-          <Sentence />
+          <Sentence description={description} />
         </div>
         <div className={styles.like_div}>
           <FontAwesomeIcon
@@ -161,4 +129,22 @@ function OneTweet({
   );
 }
 
-export default OneTweet;
+//fonction qui récupère la phrase pour trouver les mots hashtag et les styliser avant de l'afficher
+function Sentence({ description }) {
+  const hashtagRegex = /#(\w+)/g;
+
+  const words = description.split(' ');
+  const tweetText = words.map((word, index) => {
+    const isWordWithHashtag = word.match(hashtagRegex);
+
+    return isWordWithHashtag ? (
+      <span key={index} style={{ color: '#4096FF', fontWeight: 'bold' }}>
+        {`${word} `}
+      </span>
+    ) : (
+      `${word} `
+    );
+  });
+
+  return <span>{tweetText}</span>;
+}

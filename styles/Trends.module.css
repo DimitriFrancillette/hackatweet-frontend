@@ -14,6 +14,11 @@
   text-underline-offset: 4px;
 }
 
+.error {
+  color: rgb(179, 54, 54);
+  font-weight: bolder;
+}
+
 .trendsBox {
   width: 90%;
   max-height: 20vh;
