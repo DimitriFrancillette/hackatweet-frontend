@@ -33,21 +33,24 @@ export default function TweetPage() {
       });
   }, [tweetsReload]);
 
-  const tweetList = tweetsData.map((data) => {
-    return (
-      <OneTweet
-        key={data._id}
-        description={data.description}
-        likes={data.likes}
-        postedDate={data.postedTime}
-        userId={data.user._id}
-        firstname={data.user.firstname}
-        username={data.user.username}
-        tweetId={data._id}
-        setTweetsReload={setTweetsReload}
-      />
-    );
-  });
+  const tweetList = tweetsData
+    .slice()
+    .reverse()
+    .map((data) => {
+      return (
+        <OneTweet
+          key={data._id}
+          description={data.description}
+          likes={data.likes}
+          postedDate={data.postedTime}
+          userId={data.user._id}
+          firstname={data.user.firstname}
+          username={data.user.username}
+          tweetId={data._id}
+          setTweetsReload={setTweetsReload}
+        />
+      );
+    });
 
   return (
     <div className={styles.mainHome}>

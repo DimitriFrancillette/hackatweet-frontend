@@ -18,10 +18,6 @@ export default function HashtagPage({ hashtagName }) {
   const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
-    setReload((prevReload) => !prevReload);
-  }, [hashtagName]);
-
-  useEffect(() => {
     setIsLoading(true);
     fetch('https://hackhatweet-backend-ten.vercel.app/hashtags/')
       .then((response) => {
@@ -51,42 +47,40 @@ export default function HashtagPage({ hashtagName }) {
   };
 
   const hashtagValue = (value) => {
-    let filter = hashtagsData.filter((e) => {
-      return e.name.includes(`#${value}`);
-    });
-
-    if (filter.length > 0) {
-      tweetsSetUp(filter);
-    } else {
-      tweetsSetUp(hashtagsData);
-    }
+    let filter = hashtagsData.filter((e) => e.name.includes(`#${value}`));
+    filter.length > 0 ? tweetsSetUp(filter) : tweetsSetUp(hashtagsData);
   };
 
-  const tweetsSetUp = (data) => {
+  //on this page tweets display is done based on hastags data
+  const tweetsSetUp = (selectedHashtagData) => {
     const tweetsArray = [];
-    data.forEach((tag) => {
-      tag.tweet.forEach((element) => {
+
+    selectedHashtagData.forEach((hashtag) => {
+      hashtag.tweet.forEach((element) => {
         tweetsArray.push(element);
       });
     });
     setTweetsData(tweetsArray);
   };
 
-  let tweetList = tweetsData.map((data, i) => {
-    return (
-      <OneTweet
-        key={i}
-        description={data.description}
-        likes={data.likes}
-        postedDate={data.postedTime}
-        userId={data.user._id}
-        firstname={data.user.firstname}
-        username={data.user.username}
-        tweetId={data._id}
-        tweetListChange={tweetListChange}
-      />
-    );
-  });
+  let tweetList = tweetsData
+    .slice()
+    .reverse()
+    .map((data, i) => {
+      return (
+        <OneTweet
+          key={i}
+          description={data.description}
+          likes={data.likes}
+          postedDate={data.postedTime}
+          userId={data.user._id}
+          firstname={data.user.firstname}
+          username={data.user.username}
+          tweetId={data._id}
+          tweetListChange={tweetListChange}
+        />
+      );
+    });
 
   return (
     <div className={styles.mainHome}>
