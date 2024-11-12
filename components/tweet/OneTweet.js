@@ -14,6 +14,7 @@ export default function OneTweet({
   setTweetsReload,
   userId,
   description,
+  setTweetsReloadForDelete,
 }) {
   const [showTrash, setShowTrash] = useState(false);
   const user = useSelector((state) => state.user.value);
@@ -27,7 +28,7 @@ export default function OneTweet({
     if (userId === user.userId) {
       setShowTrash(true);
     }
-  }, []);
+  }, [user, userId]);
 
   const handleLikes = () => {
     const isIdInLikesArray = likesArray.includes(user.userId);
@@ -85,6 +86,10 @@ export default function OneTweet({
       .then((response) => response.json())
       .then(() => {
         setTweetsReload((prevState) => !prevState);
+
+        if (setTweetsReloadForDelete) {
+          setTweetsReloadForDelete((prevState) => !prevState);
+        }
       });
   };
 

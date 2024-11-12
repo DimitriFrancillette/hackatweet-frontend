@@ -3,6 +3,8 @@ import { Input, Button } from 'antd';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
+const MAX_CHARATER_NUMBER = 280;
+
 function TweetPosting({ setTweetsReload }) {
   const [letterCount, setLetterCount] = useState(0);
   const [tweetText, setTweetText] = useState('');
@@ -65,13 +67,15 @@ function TweetPosting({ setTweetsReload }) {
           className={styles.textArea}
           rows={4}
           placeholder="What's up ?"
-          maxLength={280}
+          maxLength={MAX_CHARATER_NUMBER}
           onChange={onChange}
           value={tweetText}
         />
       </div>
       <div className={styles.button_div}>
-        <span className={styles.letterCount}>{letterCount}/280</span>
+        <span className={styles.letterCount}>
+          {letterCount}/{MAX_CHARATER_NUMBER}
+        </span>
         <Button
           className={styles.tweetButton}
           type='primary'

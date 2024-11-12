@@ -13,9 +13,10 @@ export default function HashtagPage({ hashtagName }) {
   const [hashtagsData, setHashtagsData] = useState([]);
   const [tweetsData, setTweetsData] = useState([]);
   const [tweetsReload, setTweetsReload] = useState(false);
-  const [reload, setReload] = useState(false);
+  const [tweetsReloadForDelete, setTweetsReloadForDelete] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  // console.log(tweetsReloadForDelete, '4 del');
 
   useEffect(() => {
     setIsLoading(true);
@@ -35,16 +36,11 @@ export default function HashtagPage({ hashtagName }) {
         setErrorMessage('Something went wrong.');
         setIsLoading(false);
       });
-  }, [reload]);
+  }, [hashtagName, tweetsReloadForDelete]);
 
   useEffect(() => {
     hashtagValue(hashtagName);
-  }, [tweetsReload]);
-
-  const tweetListChange = () => {
-    setTweetsReload(!tweetsReload);
-    setReload(!reload);
-  };
+  }, [tweetsReload, hashtagName]);
 
   const hashtagValue = (value) => {
     let filter = hashtagsData.filter((e) => e.name.includes(`#${value}`));
@@ -77,7 +73,8 @@ export default function HashtagPage({ hashtagName }) {
           firstname={data.user.firstname}
           username={data.user.username}
           tweetId={data._id}
-          tweetListChange={tweetListChange}
+          setTweetsReload={setTweetsReload}
+          setTweetsReloadForDelete={setTweetsReloadForDelete}
         />
       );
     });
@@ -94,7 +91,6 @@ export default function HashtagPage({ hashtagName }) {
       <div className={styles.middle}>
         <div className={styles.tweet_div}>
           <HashtagSearch
-            tweetListChange={tweetListChange}
             hashtagValue={hashtagValue}
             hashtagName={hashtagName}
           />
