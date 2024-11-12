@@ -33,14 +33,10 @@ export default function TweetPage() {
       });
   }, [tweetsReload]);
 
-  const tweetListChange = () => {
-    setTweetsReload(!tweetsReload);
-  };
-
-  const tweetList = tweetsData.map((data, i) => {
+  const tweetList = tweetsData.map((data) => {
     return (
       <OneTweet
-        key={i}
+        key={data._id}
         description={data.description}
         likes={data.likes}
         postedDate={data.postedTime}
@@ -48,7 +44,7 @@ export default function TweetPage() {
         firstname={data.user.firstname}
         username={data.user.username}
         tweetId={data._id}
-        tweetListChange={tweetListChange}
+        setTweetsReload={setTweetsReload}
       />
     );
   });
@@ -61,7 +57,7 @@ export default function TweetPage() {
       </div>
       <div className={styles.middle}>
         <div className={styles.tweet_div}>
-          <TweetPosting tweetListChange={tweetListChange} />
+          <TweetPosting setTweetsReload={setTweetsReload} />
         </div>
         <div className={styles.lastTweets_div}>
           {isLoading && <Spinner />}

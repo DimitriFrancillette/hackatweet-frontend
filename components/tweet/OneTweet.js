@@ -11,7 +11,7 @@ function OneTweet({
   likes,
   tweetId,
   postedDate,
-  tweetListChange,
+  setTweetsReload,
   userId,
   description,
 }) {
@@ -42,7 +42,7 @@ function OneTweet({
       )
         .then((response) => response.json())
         .then(() => {
-          tweetListChange();
+          setTweetsReload((prevState) => !prevState);
         });
       return;
     }
@@ -57,7 +57,7 @@ function OneTweet({
     )
       .then((response) => response.json())
       .then(() => {
-        tweetListChange();
+        setTweetsReload((prevState) => !prevState);
       });
   };
 
@@ -89,7 +89,7 @@ function OneTweet({
     })
       .then((response) => response.json())
       .then(() => {
-        tweetListChange();
+        setTweetsReload((prevState) => !prevState);
       });
   };
 
