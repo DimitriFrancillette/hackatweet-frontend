@@ -8,6 +8,7 @@ import Spinner from '@/components/Spinner';
 import ErrorMessage from '@/components/ErrorMessage';
 import UserInformation from '@/components/UserInformation';
 import Bird from '@/components/Bird';
+import { BASE_API_URL } from '@/lib/constant';
 
 export default function HashtagPage({ hashtagName }) {
   const [hashtagsData, setHashtagsData] = useState([]);
@@ -16,11 +17,10 @@ export default function HashtagPage({ hashtagName }) {
   const [tweetsReloadForDelete, setTweetsReloadForDelete] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  // console.log(tweetsReloadForDelete, '4 del');
 
   useEffect(() => {
     setIsLoading(true);
-    fetch('https://hackhatweet-backend-ten.vercel.app/hashtags/')
+    fetch(`${BASE_API_URL}/hashtags/`)
       .then((response) => {
         if (!response.ok) {
           throw new Error();

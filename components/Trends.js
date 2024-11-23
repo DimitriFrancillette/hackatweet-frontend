@@ -2,13 +2,14 @@ import styles from '../styles/Trends.module.css';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import HashtagCard from './hashtag/HashtagCard';
+import { BASE_API_URL } from '@/lib/constant';
 
 function Trends({ reload }) {
   const [hashData, setHashData] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
-    fetch('https://hackhatweet-backend-ten.vercel.app/hashtags/')
+    fetch(`${BASE_API_URL}/hashtags/`)
       .then((response) => {
         if (!response.ok) {
           throw new Error();

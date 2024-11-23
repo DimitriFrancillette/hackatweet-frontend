@@ -5,6 +5,7 @@ import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../redux/reducers/user';
+import { BASE_API_URL } from '@/lib/constant';
 
 function AuthModal({ authType, modalState, showModal }) {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ function AuthModal({ authType, modalState, showModal }) {
   }
 
   const handleSignUp = () => {
-    fetch(`https://hackhatweet-backend-ten.vercel.app/users/${authType}`, {
+    fetch(`${BASE_API_URL}/users/${authType}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(objToPost),
