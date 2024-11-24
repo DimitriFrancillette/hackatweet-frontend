@@ -17,22 +17,16 @@ function AuthModal({ authType, modalState, showModal }) {
   const [isUsernameFocused, setIsUsernameFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
 
-  let objToPost = {};
+  let objToPost = {
+    username: username,
+    password: password,
+  };
 
   if (authType === 'signup') {
-    objToPost = {
-      firstname: firstname,
-      username: username,
-      password: password,
-    };
-  } else {
-    objToPost = {
-      username: username,
-      password: password,
-    };
+    objToPost.firstname = firstname;
   }
 
-  const handleSignUp = () => {
+  const handleIdentification = () => {
     fetch(`${BASE_API_URL}/users/${authType}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -81,7 +75,7 @@ function AuthModal({ authType, modalState, showModal }) {
             className={styles.modaleButton}
             key='submit'
             type='primary'
-            onClick={() => handleSignUp()}
+            onClick={() => handleIdentification()}
           >
             {authType === 'signup' ? 'Sign up' : 'Sign in'}
           </Button>,
